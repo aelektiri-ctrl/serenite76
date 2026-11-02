@@ -67,9 +67,9 @@
 
   .a11y{position:fixed;z-index:38;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);padding:6px 11px}
   .a11y-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:10px;cursor:pointer;padding:7px 15px;line-height:1.1;min-width:42px}
+  .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:9px;cursor:pointer;padding:4px 10px;line-height:1.1;min-width:32px}
   .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft)}
-  .a11y .s{font-size:.95rem}.a11y .m{font-size:1.2rem}.a11y .l{font-size:1.5rem}
+  .a11y .s{font-size:.8rem}.a11y .m{font-size:1rem}.a11y .l{font-size:1.22rem}
 
   header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);scroll-margin-top:70px;background:linear-gradient(180deg,var(--halo-a),var(--bg) 82%)}
   header.hero .halo{position:absolute;inset:-45% -15% auto;height:130%;pointer-events:none;opacity:.85;
@@ -81,8 +81,8 @@
   .hero .sun .gull.c{animation:gullA 10s ease-in-out infinite reverse}
   @keyframes gullA{0%,100%{transform:translate(0px,0px)}50%{transform:translate(5px,-4px)}}
   @keyframes gullB{0%,100%{transform:translate(0px,0px)}50%{transform:translate(-5px,-3px)}}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;padding-block:clamp(48px,9vw,88px)}
-  .hero .sun{width:min(240px,44vw);height:auto;color:var(--gold);justify-self:center}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;padding-block:clamp(44px,9vw,84px)}
+  .hero .sun{width:clamp(100px,27vw,150px);height:auto;color:var(--gold);justify-self:end;margin-top:4px}
   .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
   .hero .mark b{color:var(--accent-deep)}
   .hero .lede{font-family:var(--serif);font-size:clamp(1.4rem,4.6vw,2.1rem);max-width:18ch;margin-top:.3em;color:var(--fg)}
@@ -217,7 +217,7 @@
   @media (max-width:640px){
     .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
     .tiers,.statgrid,.flowers{grid-template-columns:1fr 1fr}
-    .hero .wrap{grid-template-columns:1fr}.hero .sun{width:min(200px,56vw)}
+    .hero .sun{width:clamp(84px,25vw,120px)}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
