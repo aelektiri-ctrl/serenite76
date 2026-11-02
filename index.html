@@ -1,0 +1,984 @@
+<title>Sérénité 76</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Sérénité 76 — soin des sépultures & des familles, Le Havre.
+     Lumière d'aube, sobre et vivante. Menu replié, calendrier de RDV, catalogue de fleurs, dons interactifs. */
+  :root{
+    --bg:#fbfcfe; --surface:#ffffff; --surface-2:#f3f6fc;
+    --fg:#383b47; --muted:#7f8196; --line:#e9ecf5;
+    --accent:#5f88c6; --accent-deep:#3f619e; --accent-soft:#eaf1fb;
+    --gold:#d9ab5e; --gold-soft:#f8f0dd;
+    --ok:#6fa882; --rose:#d98ba6;
+    --halo-a:#e9f0fb; --halo-b:#f8f0dd;
+    --shadow:0 10px 30px rgba(63,97,158,.09);
+    --shadow-sm:0 2px 10px rgba(63,97,158,.06);
+    --serif:"Marcellus",Georgia,"Times New Roman",serif;
+    --sans:"Mulish",system-ui,-apple-system,Segoe UI,sans-serif;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#11131c; --surface:#1a1d29; --surface-2:#1e2231;
+    --fg:#ecebf5; --muted:#a3a4bc; --line:#2a2e3e;
+    --accent:#8fb0e6; --accent-deep:#b9cef1; --accent-soft:#1d2740;
+    --gold:#e2bd78; --gold-soft:#2b2a1d;
+    --ok:#8fbf9f; --rose:#d49fb6;
+    --halo-a:#1a2640; --halo-b:#2a2819;
+    --shadow:0 12px 34px rgba(0,0,0,.4); --shadow-sm:0 2px 12px rgba(0,0,0,.3);
+    color-scheme:dark;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#11131c; --surface:#1a1d29; --surface-2:#1e2231;
+    --fg:#ecebf5; --muted:#a3a4bc; --line:#2a2e3e;
+    --accent:#8fb0e6; --accent-deep:#b9cef1; --accent-soft:#1d2740;
+    --gold:#e2bd78; --gold-soft:#2b2a1d;
+    --ok:#8fbf9f; --rose:#d49fb6;
+    --halo-a:#1a2640; --halo-b:#2a2819;
+    --shadow:0 12px 34px rgba(0,0,0,.4); --shadow-sm:0 2px 12px rgba(0,0,0,.3);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:calc(100% * var(--fz,1))}
+  body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1.02rem;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:40}
+  .wrap{max-width:960px;margin:0 auto;
+    padding-left:max(18px,env(safe-area-inset-left,0px));
+    padding-right:max(18px,env(safe-area-inset-right,0px))}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;text-wrap:balance;margin:0;letter-spacing:.01em}
+  h2{font-size:clamp(1.75rem,5vw,2.6rem);color:var(--accent-deep);margin-bottom:.12em}
+  p{margin:.5em 0}
+  a{color:var(--accent-deep)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .eyebrow svg{width:16px;height:16px}
+  .ico{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+  nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:41;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+  nav .brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-size:1.3rem;color:var(--fg);text-decoration:none;white-space:nowrap}
+  nav .brand .logo{width:30px;height:30px;color:var(--gold)}
+  nav .brand b{color:var(--accent-deep)}
+  .menu-btn{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--accent-deep);cursor:pointer}
+  .menu-btn svg{width:24px;height:24px}
+  .links{position:absolute;top:calc(100% + 6px);right:max(18px,env(safe-area-inset-right,0px));background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;display:none;flex-direction:column;min-width:214px;gap:2px}
+  nav.top.open .links{display:flex}
+  .links a{font-size:.98rem;font-weight:600;color:var(--fg);text-decoration:none;padding:10px 14px;border-radius:10px}
+  .links a:hover,.links a.active{color:var(--accent-deep);background:var(--accent-soft)}
+  .links a.don{color:#fff;background:var(--accent);margin-top:4px}
+  .links a.don:hover,.links a.don.active{background:var(--accent-deep);color:#fff}
+
+  .a11y{position:fixed;z-index:38;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);padding:6px 11px}
+  .a11y-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer;padding:1px 9px;line-height:1.2}
+  .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent)}
+  .a11y .s{font-size:.78rem}.a11y .m{font-size:.98rem}.a11y .l{font-size:1.18rem}
+
+  header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);scroll-margin-top:70px;background:linear-gradient(180deg,var(--halo-a),var(--bg) 82%)}
+  header.hero .halo{position:absolute;inset:-45% -15% auto;height:130%;pointer-events:none;opacity:.85;
+    background:radial-gradient(52% 50% at 78% 16%,var(--halo-b),transparent 70%),radial-gradient(50% 46% at 16% 8%,var(--halo-a),transparent 72%);
+    animation:drift 24s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.07)}}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;padding-block:clamp(48px,9vw,88px)}
+  .hero .sun{width:min(260px,46vw);height:auto;color:var(--gold);justify-self:center}
+  .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
+  .hero .mark b{color:var(--accent-deep)}
+  .hero .lede{font-family:var(--serif);font-size:clamp(1.4rem,4.6vw,2.1rem);max-width:18ch;margin-top:.3em;color:var(--fg)}
+  .hero .sub{color:var(--fg);opacity:.82;max-width:48ch;margin-top:1em;font-size:1.04rem}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.6em}
+  .assure{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4em}
+  .assure span{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+  .assure svg{width:14px;height:14px;color:var(--ok)}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;text-decoration:none;padding:12px 22px;border-radius:99px;border:1px solid transparent;cursor:pointer;transition:background .2s,transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn.primary:hover{background:var(--accent-deep)}
+  .btn.ghost{background:var(--surface);color:var(--accent-deep);border-color:var(--line)}
+  .btn.gold{background:var(--gold);color:#4a3912}
+  .btn svg{width:18px;height:18px}
+
+  section{padding-block:clamp(42px,7vw,66px);border-bottom:1px solid var(--line);scroll-margin-top:66px}
+  .lead{color:var(--muted);max-width:60ch;margin-top:.25em}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0;box-shadow:var(--shadow-sm)}
+  .step .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--gold-soft);color:var(--gold);font-family:var(--serif);font-size:1.2rem}
+  .step h3{margin:.5em 0 .15em;font-size:1rem;font-family:var(--sans);font-weight:700}
+  .step p{font-size:.9rem;color:var(--muted);margin:0}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+
+  details.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;min-width:0;overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;position:relative}
+  details.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--c,var(--accent))}
+  details.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+  details.card[open]{box-shadow:var(--shadow)}
+  summary{list-style:none;cursor:pointer;padding:20px 22px 20px 24px;display:block}
+  summary::-webkit-details-marker{display:none}
+  .sum-head{display:flex;align-items:flex-start;gap:13px}
+  .sum-head .badge{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--c,var(--accent-deep))}
+  .sum-head .badge svg{width:23px;height:23px}
+  .sum-txt{flex:1;min-width:0}
+  .cat{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--c,var(--accent))}
+  .sum-txt h3{font-family:var(--sans);font-weight:700;font-size:1.08rem;margin-top:.15em}
+  .price{font-family:var(--serif);font-size:1.22rem;color:var(--fg);white-space:nowrap;padding-top:2px}
+  .price small{font-family:var(--sans);font-size:.7rem;color:var(--muted);font-weight:600}
+  .teaser{font-size:.92rem;color:var(--muted);margin:.7em 0 0}
+  .more{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:var(--c,var(--accent-deep));margin-top:12px}
+  .more .plus{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;border:1.5px solid currentColor;font-size:.95rem;line-height:1;transition:transform .25s}
+  details.card[open] .more .plus{transform:rotate(45deg)}
+  details.card[open] .more .lbl::after{content:" — replier"}
+  .reveal{padding:4px 22px 22px 24px}
+  .reveal>div{border-top:1px solid var(--line);padding-top:14px}
+  details[open] .reveal{animation:open .3s ease}
+  @keyframes open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .reveal p{font-size:.94rem;color:var(--fg);opacity:.9}
+  .reveal ul{margin:.5em 0 0;padding-left:1.1em;font-size:.9rem;color:var(--muted)}
+  .reveal li{margin:.26em 0}
+  .situation{background:var(--surface-2);border-left:3px solid var(--c,var(--accent));border-radius:0 12px 12px 0;padding:13px 16px;margin-top:15px}
+  .situation .q{font-family:var(--serif);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .situation p{margin:.3em 0 0;color:var(--fg);opacity:.92;font-style:italic;font-size:.93rem}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent-deep);font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:99px;margin-top:14px}
+  .chip svg{width:13px;height:13px}
+
+  .feature{grid-column:1/-1;background:linear-gradient(135deg,var(--surface),var(--gold-soft));border:1px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,32px);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+  .feature .fico{position:absolute;right:-10px;top:-10px;width:120px;height:120px;color:var(--gold);opacity:.18}
+  .feature .cat{color:var(--gold)}
+  .feature h3{font-family:var(--serif);font-size:clamp(1.3rem,3.6vw,1.8rem);color:var(--accent-deep);font-weight:400;margin-top:.2em}
+  .feature p{color:var(--fg);opacity:.9;max-width:56ch;position:relative}
+
+  .ethic{background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:20px;padding:clamp(24px,5vw,36px);box-shadow:var(--shadow-sm)}
+  .ethic p{color:var(--fg);opacity:.92;max-width:60ch}
+
+  .asso{background:linear-gradient(180deg,var(--gold-soft),var(--bg))}
+  .tiers,.statgrid,.flowers{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:24px}
+  .tier{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 16px;text-align:center;min-width:0;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
+  #dons .tier{cursor:pointer}
+  #dons .tier:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  #dons .tier.on{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:1px}
+  .tier .amt{font-family:var(--serif);font-size:1.9rem;color:var(--gold)}
+  .tier.libre .amt{color:var(--accent)}
+  .tier p{font-size:.85rem;color:var(--muted);margin:.35em 0 0}
+  .don-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+  .don-note{font-size:.84rem;color:var(--muted);max-width:50ch}
+
+  .flower{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 15px;text-align:center;cursor:pointer;min-width:0;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
+  .flower:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .flower.on{border-color:var(--rose);outline:2px solid var(--rose);outline-offset:1px}
+  .flower svg{width:30px;height:30px;color:var(--rose)}
+  .flower h3{font-family:var(--sans);font-weight:700;font-size:.98rem;margin:.4em 0 .1em}
+  .flower .fp{font-family:var(--serif);font-size:1.3rem;color:var(--accent-deep)}
+  .flower p{font-size:.8rem;color:var(--muted);margin:.2em 0 0}
+  .out{white-space:pre-wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-size:.9rem;color:var(--fg);margin-top:16px}
+
+  .cal-wrap{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow-sm);max-width:430px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .cal-title{font-family:var(--serif);font-size:1.2rem;color:var(--accent-deep);text-transform:capitalize}
+  .cal-nav{border:1px solid var(--line);background:var(--bg);color:var(--accent-deep);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:1.2rem;line-height:1}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .cal-dow{text-align:center;font-size:.7rem;font-weight:700;color:var(--muted);padding:2px 0}
+  .cal-cell{border:1px solid transparent;border-radius:9px;padding:9px 0;font-size:.92rem;font-family:var(--sans);background:transparent;color:var(--fg)}
+  .cal-cell.empty{border:none}
+  .cal-cell.avail{background:color-mix(in srgb,var(--ok) 20%,var(--surface));border-color:color-mix(in srgb,var(--ok) 40%,transparent);color:var(--accent-deep);cursor:pointer;font-weight:700}
+  .cal-cell.avail:hover{background:color-mix(in srgb,var(--ok) 38%,var(--surface))}
+  .cal-cell.busy{background:color-mix(in srgb,var(--rose) 20%,var(--surface));color:var(--muted);text-decoration:line-through}
+  .cal-cell.off{color:var(--muted);opacity:.4}
+  .cal-cell.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cal-legend{display:flex;gap:16px;margin-top:11px;font-size:.76rem;color:var(--muted)}
+  .cal-legend .lg{display:inline-flex;align-items:center;gap:6px}
+  .cal-legend .lg::before{content:"";width:12px;height:12px;border-radius:4px;display:inline-block}
+  .cal-legend .av::before{background:color-mix(in srgb,var(--ok) 45%,var(--surface))}
+  .cal-legend .bz::before{background:color-mix(in srgb,var(--rose) 42%,var(--surface))}
+  .sel-date{margin-top:11px;font-weight:700;color:var(--accent-deep);font-size:.92rem;min-height:1.2em}
+
+  .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:22px}
+  .ph{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 17px;box-shadow:var(--shadow-sm)}
+  .ph.todo{border-style:dashed;box-shadow:none}
+  .ph .k{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ph .v{font-family:var(--serif);font-size:1.1rem;color:var(--fg);margin-top:4px;word-break:break-word}
+
+  .rdv{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,4vw,26px);box-shadow:var(--shadow-sm);display:grid;gap:13px}
+  .rdv-h{font-family:var(--serif);font-weight:400;color:var(--accent-deep);font-size:1.3rem}
+  .rdv label{display:grid;gap:5px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .rdv input,.rdv select,.rdv textarea{font-family:var(--sans);font-size:.95rem;font-weight:400;letter-spacing:normal;text-transform:none;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+  .rdv input:focus,.rdv select:focus,.rdv textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .rdv input[readonly]{background:var(--surface-2)}
+  .rdv textarea{resize:vertical}
+  .rdv-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rdv .btn{border:none}
+  .rdv-out{white-space:pre-wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-size:.9rem;color:var(--fg)}
+
+  footer{padding-block:32px 72px;color:var(--muted);font-size:.85rem}
+  footer strong{color:var(--fg)}
+  .note{display:block;font-size:.82rem;color:var(--gold);margin-top:12px;max-width:62ch}
+
+  @media (max-width:640px){
+    .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
+    .tiers,.statgrid,.flowers{grid-template-columns:1fr 1fr}
+    .hero .wrap{grid-template-columns:1fr}.hero .sun{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    header.hero .halo{animation:none}
+    details.card,.tier,.flower,.btn{transition:none}
+    details[open] .reveal{animation:none}
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M5.2 18.8l1.7-1.7M17.1 6.9l1.7-1.7"/></symbol>
+  <symbol id="ico-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="ico-leaf" viewBox="0 0 24 24"><path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/><path d="M5 19c3-6 6-9 11-11"/></symbol>
+  <symbol id="ico-flower" viewBox="0 0 24 24"><path d="M12 13c-3 0-5-2-5-5 2 0 5 2 5 5Z"/><path d="M12 13c3 0 5-2 5-5-2 0-5 2-5 5Z"/><path d="M12 13v8"/><path d="M12 21c2.5 0 4-1.3 4-3"/></symbol>
+  <symbol id="ico-bell" viewBox="0 0 24 24"><path d="M6.5 17c-.6 0-.9-.7-.5-1.2L7 14v-3a5 5 0 0 1 10 0v3l1 1.8c.4.5.1 1.2-.5 1.2Z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="ico-gem" viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9Z"/><path d="M3 9h18M9 4 7 9l5 11 5-11-2-5"/></symbol>
+  <symbol id="ico-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M15 19c0-2 .7-3.4 2-4.3"/></symbol>
+  <symbol id="ico-video" viewBox="0 0 24 24"><rect x="3.5" y="7" width="11" height="10" rx="2"/><path d="M14.5 10.5 20.5 7v10l-6-3.5"/></symbol>
+  <symbol id="ico-heart" viewBox="0 0 24 24"><path d="M12 20S4.5 15.4 4.5 10.3A3.5 3.5 0 0 1 12 7.2a3.5 3.5 0 0 1 7.5 3.1C19.5 15.4 12 20 12 20Z"/></symbol>
+  <symbol id="ico-file" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7Z"/><path d="M14 3v4h4M9.5 12h5M9.5 16h5"/></symbol>
+  <symbol id="ico-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="4" rx="1"/><path d="M5 13v8h14v-8M12 9v12"/><path d="M12 9S10 3.5 7.8 4.8 10 9 12 9Zm0 0s2-5.5 4.2-4.2S14 9 12 9Z"/></symbol>
+  <symbol id="ico-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="ico-hand-heart" viewBox="0 0 24 24"><path d="M4 13c3 5 11 6 16 1"/><path d="M12 10s-3-2-4.5-.5S9 13 12 13s4.5-2 4.5-3.5S13 8 12 10Z"/></symbol>
+  <symbol id="ico-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></symbol>
+</svg>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="#accueil"><svg class="ico logo"><use href="#ico-sun"/></svg>Sérénité <b>76</b></a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><svg class="ico"><use href="#ico-menu"/></svg></button>
+    <div class="links" id="menu">
+      <a href="#sepultures">Sépultures</a>
+      <a href="#fleurs">Fleurs</a>
+      <a href="#familles">Familles</a>
+      <a href="#aides">Vos droits</a>
+      <a href="#association">Association</a>
+      <a href="#contact">Rendez-vous</a>
+      <a href="#dons" class="don">Faire un don</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="halo"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><svg class="ico"><use href="#ico-sun"/></svg>Le Havre &amp; agglomération</div>
+      <div class="mark">Sérénité <b>76</b></div>
+      <div class="lede">Veiller sur ceux qui restent, et sur ceux qui reposent.</div>
+      <p class="sub">La distance, l'âge, la maladie éloignent parfois d'une tombe que l'on aime. Nous en prenons soin à votre place, avec douceur, et nous vous envoyons une photo à chaque passage.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#sepultures"><svg class="ico"><use href="#ico-leaf"/></svg>Découvrir nos soins</a>
+        <a class="btn ghost" href="#contact">Prendre rendez-vous</a>
+      </div>
+      <div class="assure">
+        <span><svg class="ico"><use href="#ico-check"/></svg>Devis gratuit</span>
+        <span><svg class="ico"><use href="#ico-check"/></svg>Crédit d'impôt 50 %</span>
+        <span><svg class="ico"><use href="#ico-check"/></svg>Photo à chaque passage</span>
+      </div>
+    </div>
+    <svg class="ico sun" viewBox="0 0 260 230" aria-hidden="true">
+      <circle cx="176" cy="70" r="30" fill="currentColor" opacity="0.12" stroke="none"/>
+      <circle cx="176" cy="70" r="30"/>
+      <g stroke-width="1.4"><path d="M176 26V18M176 122v8M122 70h-8M238 70h8M139 33l-6-6M213 107l6 6M139 107l-6 6M213 33l6-6"/></g>
+      <path d="M84 190 88 112 92 84 97 60 102 84 106 112 110 190Z"/>
+      <path d="M90 152h14M91 128h12M94 102h6M97 60V50M92 55h10"/>
+      <path stroke-width="1.5" d="M212 190V118M212 118h34M240 118v16M212 130h18"/>
+      <path stroke-width="1.5" d="M194 190V140M194 140h16"/>
+      <path d="M145 178h20l-4 8h-12ZM155 178V152M155 152 142 172M155 152 168 172M142 172h26"/>
+      <g stroke-width="1.5"><path d="M22 198q18 7 36 0t36 0 36 0 36 0 36 0"/><path d="M38 210q18 7 36 0t36 0 36 0 36 0"/></g>
+    </svg>
+  </div>
+</header>
+
+<section id="comment">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-check"/></svg>Comment ça se passe</span>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Vous confiez la sépulture</h3><p>Le cimetière, le nom, l'emplacement. Un simple appel suffit.</p></div>
+      <div class="step"><div class="n">2</div><h3>Nous intervenons</h3><p>Entretien, fleurs, présence, avec soin et discrétion.</p></div>
+      <div class="step"><div class="n">3</div><h3>Vous recevez la preuve</h3><p>Une photo datée, avant et après. Inclus, toujours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sepultures">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-leaf"/></svg>Premier pilier</span>
+    <h2>Le soin de la sépulture</h2>
+    <p class="lead">Que la pierre reste belle et fleurie, quelles que soient les saisons et la distance. Touchez une carte pour voir le détail.</p>
+    <div class="grid">
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-leaf"/></svg></span>
+            <div class="sum-txt"><div class="cat">Entretien</div><h3>Nettoyage de la tombe</h3></div>
+            <div class="price">dès 45 €<small> /passage</small></div></div>
+          <p class="teaser">La pierre nettoyée, les mousses retirées, le pourtour désherbé, puis le lustrage.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Nettoyage complet de la pierre, mousses et lichens retirés, désherbage tout autour, puis lustrage. Produits respectueux du marbre comme du granit.</p>
+          <ul><li>2 passages / an : dès 90 €</li><li>4 passages / an : dès 170 €</li><li>6 passages / an : dès 245 €</li></ul>
+          <div class="situation"><div class="q">En situation</div><p>« Monsieur R., parti vivre près de sa fille à Lyon, ne pouvait plus entretenir la tombe de son épouse au Havre. Quatre fois par an, nous la nettoyons et nous lui envoyons les photos. Il nous dit qu'il dort mieux. »</p></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#d98ba6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Fleurissement</div><h3>Des fleurs aux bonnes dates</h3></div>
+            <div class="price">dès 30 €</div></div>
+          <p class="teaser">Pour la Toussaint, un anniversaire, ou le jour que vous seul connaissez.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Fleurs fraîches de saison ou compositions durables, posées aux dates qui comptent. Les anciennes fleurs sont retirées à chaque passage.</p>
+          <ul><li>Composition Toussaint : dès 30 €</li><li>Dates d'anniversaire, chaque année</li><li>Rappel automatique, pour ne plus y penser</li></ul>
+          <div class="situation"><div class="q">En situation</div><p>« Chaque 14 mars, jour de leur mariage, une rose blanche sur la tombe de son mari. Elle ne peut plus se déplacer ; nous le faisons pour elle, sans qu'elle ait à le redemander. »</p></div>
+        </div></div>
+      </details>
+      <div class="feature">
+        <svg class="ico fico" aria-hidden="true"><use href="#ico-heart"/></svg>
+        <div class="cat">Prévoyance · longue durée</div>
+        <h3>L'entretien qui vous survit</h3>
+        <p>Un contrat sur 5, 10 ans ou plus, souscrit de votre vivant, pour que la tombe d'un proche — ou la vôtre — soit fleurie et entretenue sans interruption, même le jour où vous ne serez plus là pour y veiller. Vous décidez une fois ; nous honorons la promesse, chaque saison, pendant toutes ces années.</p>
+        <span class="chip"><svg class="ico"><use href="#ico-check"/></svg>Capital sur devis · paiement échelonné</span>
+      </div>
+      <details class="card" style="--c:#9aa0cc">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-bell"/></svg></span>
+            <div class="sum-txt"><div class="cat">Vigilance</div><h3>Veille &amp; alerte concession</h3></div>
+            <div class="price">offert</div></div>
+          <p class="teaser">Nous vous prévenons avant qu'une concession n'arrive à échéance.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Nous surveillons l'échéance de la concession et le risque de reprise par la commune, et nous vous alertons à temps. Pour ne jamais perdre une tombe sans le savoir.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Une famille a failli perdre le caveau de ses grands-parents, faute d'avoir reçu l'avis de la mairie. Nous veillons pour que cela n'arrive pas. »</p></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Pierre</div><h3>Petites remises en état</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Reprise des joints, redorure des lettres effacées, petites réparations.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Reprise des joints, redorure des lettres effacées, petites réparations. Un état des lieux précis, avec photos, est réalisé avant tout engagement.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Les lettres du nom s'étaient effacées avec le temps. Nous les avons redorées une à une. La famille a retrouvé le prénom lisible, comme au premier jour. »</p></div>
+        </div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="fleurs">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-flower"/></svg>Un geste simple</span>
+    <h2>Faire livrer des fleurs</h2>
+    <p class="lead">Par amour, par foi, ou simplement parce qu'on pense à quelqu'un : nous déposons des fleurs sur la tombe à votre place, sans que vous ayez à vous déplacer, et nous vous envoyons la photo. Choisissez une composition.</p>
+    <div class="grid">
+      <details class="card" style="--c:#d98ba6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Fleurs fraîches</div><h3>Bouquet de saison</h3></div>
+            <div class="price">25 €</div></div>
+          <p class="teaser">Les plus belles fleurs du moment, couleur au choix.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un bouquet frais composé selon la saison. Vous choisissez l'ambiance : tons blancs et purs, pastel doux, ou couleurs vives et joyeuses.</p>
+          <button type="button" class="btn ghost choose" data-nom="Bouquet de saison" data-prix="25">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#d98ba6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Classique</div><h3>Bouquet de roses</h3></div>
+            <div class="price">30 €</div></div>
+          <p class="teaser">Des roses, couleur au choix. Simple et fort.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un bouquet de roses fraîches, blanches, rouges ou roses selon le message que vous voulez porter. Une rose seule est aussi possible, pour un geste discret.</p>
+          <button type="button" class="btn ghost choose" data-nom="Bouquet de roses" data-prix="30">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#d98ba6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Tient longtemps</div><h3>Composition sur mousse</h3></div>
+            <div class="price">45 €</div></div>
+          <p class="teaser">Montée sur mousse, elle dure. Idéale pour la Toussaint.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Une composition travaillée, montée sur mousse humide, qui tient plusieurs semaines. Parfaite quand on ne peut pas revenir souvent.</p>
+          <button type="button" class="btn ghost choose" data-nom="Composition sur mousse" data-prix="45">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#dcab7e">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Toussaint</div><h3>Chrysanthèmes en pot</h3></div>
+            <div class="price">35 €</div></div>
+          <p class="teaser">Le classique de la Toussaint, robuste et généreux.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un beau pot de chrysanthèmes, choisi dans la couleur que vous aimez, déposé et calé sur la sépulture. Résistant au froid de novembre.</p>
+          <button type="button" class="btn ghost choose" data-nom="Chrysanthèmes en pot" data-prix="35">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Élégante &amp; durable</div><h3>Orchidée en pot</h3></div>
+            <div class="price">40 €</div></div>
+          <p class="teaser">Discrète, raffinée, elle dure des semaines.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Une orchidée en pot, sobre et élégante, pour une présence durable qui ne fane pas au bout de quelques jours.</p>
+          <button type="button" class="btn ghost choose" data-nom="Orchidée en pot" data-prix="40">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#d98ba6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Grande occasion</div><h3>Grande composition</h3></div>
+            <div class="price">70 €</div></div>
+          <p class="teaser">Une pièce généreuse, pour marquer le coup.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Une composition ample et soignée, pour un anniversaire de disparition, une date importante, ou simplement pour honorer pleinement la mémoire d'un proche.</p>
+          <button type="button" class="btn ghost choose" data-nom="Grande composition" data-prix="70">Choisir cette composition</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Obsèques</div><h3>Couronne ou coussin</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Pour une cérémonie, dans le respect de vos moyens.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Couronne, coussin ou gerbe pour des obsèques, réalisés selon votre budget et vos souhaits. Nous vous montrons des modèles avant de commander.</p>
+          <button type="button" class="btn ghost choose" data-nom="Couronne ou coussin de deuil" data-prix="">Demander un devis</button>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Sans entretien</div><h3>Fleurs durables</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Belles toute l'année, pour une tombe éloignée.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Des fleurs artificielles haut de gamme, très réalistes, qui restent belles longtemps sans entretien. Idéales lorsque personne ne peut passer régulièrement.</p>
+          <button type="button" class="btn ghost choose" data-nom="Fleurs durables" data-prix="">Demander un devis</button>
+        </div></div>
+      </details>
+    </div>
+    <p id="fleur-out" class="out" hidden></p>
+    <p class="teaser" style="margin-top:12px">Livraison, dépôt sur la sépulture et photo après passage compris sur Le Havre et son agglomération. Après avoir choisi, indiquez le cimetière et la date dans le formulaire de contact.</p>
+  </div>
+</section>
+
+<section id="familles">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-people"/></svg>Second pilier</span>
+    <h2>Le soin de la famille</h2>
+    <p class="lead">Parce qu'une tombe, c'est d'abord des vivants qui portent un souvenir. Nous sommes là pour eux aussi.</p>
+    <div class="grid">
+      <details class="card" style="--c:#dcab7e">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-people"/></svg></span>
+            <div class="sum-txt"><div class="cat">Accompagnement</div><h3>Au cimetière, à vos côtés</h3></div>
+            <div class="price">dès 35 €</div></div>
+          <p class="teaser">Nous venons la chercher, nous l'accompagnons, nous la ramenons.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Nous venons chercher la personne chez elle, en maison de retraite ou de convalescence, nous l'accompagnons jusqu'à la tombe, avec patience et douceur, puis nous la ramenons. Elle n'est jamais seule.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Madame L., 86 ans, voulait revoir la tombe de son fils une dernière fois avant l'hiver. Nous l'avons emmenée, nous avons attendu le temps qu'il fallait, puis raccompagnée. »</p></div>
+          <span class="chip"><svg class="ico"><use href="#ico-check"/></svg>Service à la personne · 50 % de crédit d'impôt</span>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fb4cc">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-video"/></svg></span>
+            <div class="sum-txt"><div class="cat">À distance</div><h3>Recueillement en vidéo</h3></div>
+            <div class="price">dès 45 €</div></div>
+          <p class="teaser">Nous fleurissons, et nous vous appelons en direct depuis la tombe.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Pour les familles loin, à l'étranger, ou pour une personne alitée : nous fleurissons à votre place, et nous vous appelons en vidéo, en direct, depuis la tombe. Le temps d'un instant, vous y êtes aussi.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Ses enfants vivent au Canada. Pour la Toussaint, ils étaient là, en vidéo, pendant que nous déposions les chrysanthèmes. Ils ont pu dire quelques mots, ensemble, malgré l'océan. »</p></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#e0c27e">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-heart"/></svg></span>
+            <div class="sum-txt"><div class="cat">Présence</div><h3>Visites de convivialité</h3></div>
+            <div class="price">dès 20 €</div></div>
+          <p class="teaser">Du temps, une conversation, une présence qui rompt la solitude.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un passage régulier auprès d'une personne âgée isolée. Du temps, une conversation, une présence qui rompt la solitude. Le cœur du métier de Sophie.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Une dame nous a demandé de l'appeler mamie. Depuis, chaque semaine, quelqu'un vient. Ce n'est pas une prestation, c'est un lien. »</p></div>
+          <span class="chip"><svg class="ico"><use href="#ico-check"/></svg>Service à la personne · 50 % de crédit d'impôt</span>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-file"/></svg></span>
+            <div class="sum-txt"><div class="cat">Après le départ</div><h3>Aide aux démarches</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Résilier, prévenir les caisses, monter les dossiers.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Résilier les contrats, prévenir les caisses et la banque, monter les dossiers, suivre un renouvellement de concession. Nous prenons sur nos épaules la montagne de paperasse, au moment où vous n'avez pas la tête à ça.</p>
+          <div class="situation"><div class="q">En situation</div><p>« Après le décès de son mari, elle était submergée de courriers. Nous avons trié, répondu, classé. Elle a pu souffler et faire son deuil. »</p></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fb4cc">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-video"/></svg></span>
+            <div class="sum-txt"><div class="cat">Lien &amp; vigilance</div><h3>Veille bienveillante</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Des visites régulières, en personne ou en vidéo, et un compte rendu à la famille — avec l'accord de la personne.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Pour le fils ou la fille qui vit loin, qui travaille, qui a des enfants en bas âge : nous rendons visite à votre proche régulièrement, en personne ou en vidéo. La personne est informée et d'accord ; on ne cache rien, ce n'est pas de la surveillance.</p>
+          <p>Après chaque passage, vous recevez un petit compte rendu. Si nous sentons un coup de déprime ou un besoin, nous vous prévenons, et nous pouvons passer plus de temps avec elle. En cas de détresse réelle, nous orientons vers un médecin et les secours : une présence ne remplace pas un soignant.</p>
+          <div class="situation"><div class="q">Pour qui</div><p>« Pour celui qui ne peut pas être là tous les jours, et pour le parent qui ne veut pas être un poids et ne se plaint jamais. »</p></div>
+          <span class="chip"><svg class="ico"><use href="#ico-check"/></svg>Sur consentement · service à la personne</span>
+        </div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="facilites">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-check"/></svg>Régler sereinement</span>
+    <h2>Pour que le prix ne soit jamais un mur</h2>
+    <p class="lead">Surtout pour les prestations importantes — un contrat longue durée, un grand nettoyage, une réparation — nous nous adaptons à votre situation.</p>
+    <div class="grid">
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-file"/></svg></span>
+            <div class="sum-txt"><div class="cat">Sans engagement</div><h3>Devis gratuit</h3></div></div>
+          <p class="teaser">Rien n'est engagé tant que vous n'avez pas dit oui.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un devis clair et détaillé, gratuit, sans obligation. Vous savez à l'avance ce que vous payez, ligne par ligne. Aucune prestation ne démarre sans votre accord.</p>
+          <div class="don-cta" style="margin-top:12px"><a class="btn ghost" href="#contact">Demander mon devis</a></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-check"/></svg></span>
+            <div class="sum-txt"><div class="cat">Souplesse</div><h3>Paiement en plusieurs fois</h3></div></div>
+          <p class="teaser">Les prestations importantes se règlent en 2, 3 ou 4 fois, sans frais.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un contrat de prévoyance, un grand nettoyage ou une réparation peuvent se régler en deux, trois ou quatre fois, sans frais. Et si vous traversez un passage difficile, on en parle : on trouve une solution plutôt que d'arrêter.</p>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-check"/></svg></span>
+            <div class="sum-txt"><div class="cat">Crédit d'impôt</div><h3>La moitié rendue par l'État</h3></div></div>
+          <p class="teaser">Sur les services à la personne, 50 % reviennent en crédit d'impôt.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Les services à la personne (accompagnement, visites, présence à domicile) ouvrent droit à un crédit d'impôt de 50 %, au titre de l'article 199 sexdecies du Code général des impôts.</p>
+          <ul>
+            <li>Taux : 50 % des sommes versées.</li>
+            <li>Plafond : 12 000 € de dépenses par an, majoré de 1 500 € par personne de plus de 65 ans (jusqu'à 15 000 €).</li>
+            <li>C'est un crédit d'impôt : il vous est remboursé même si vous ne payez pas d'impôt.</li>
+            <li>Un acompte de 60 % est versé dès janvier, le solde à l'été.</li>
+          </ul>
+          <p class="teaser">Montants 2026, à confirmer sur impots.gouv.fr selon votre situation.</p>
+        </div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="aides">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-file"/></svg>Vos droits</span>
+    <h2>Les aides auxquelles vous avez droit</h2>
+    <p class="lead">Beaucoup de familles ignorent ce à quoi elles peuvent prétendre. Voici l'essentiel pour les personnes âgées et leurs proches — et nous vous aidons à monter les dossiers.</p>
+    <div class="grid">
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-hand-heart"/></svg></span>
+            <div class="sum-txt"><div class="cat">Perte d'autonomie</div><h3>APA — allocation personnalisée d'autonomie</h3></div></div>
+          <p class="teaser">Pour les 60 ans et plus en perte d'autonomie. Finance l'aide à domicile.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Pour les 60 ans et plus classés GIR 1 à 4 après une évaluation gratuite à domicile. Elle paie les heures d'aide à domicile, le portage de repas, la téléassistance, certaines adaptations du logement.</p>
+          <ul>
+            <li>Plafonds mensuels du plan d'aide (2026) : GIR 1 : 2 080,33 € · GIR 2 : 1 682,30 € · GIR 3 : 1 215,99 € · GIR 4 : 811,52 €.</li>
+            <li>La participation dépend des revenus ; nulle jusqu'à 933,89 € par mois pour une personne seule.</li>
+            <li>Dossier à déposer au conseil départemental (formulaire en mairie, au CCAS ou au CLIC).</li>
+          </ul>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#9aa0cc">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-leaf"/></svg></span>
+            <div class="sum-txt"><div class="cat">Autonomie encore bonne</div><h3>Aide ménagère</h3></div></div>
+          <p class="teaser">Quelques heures d'aide, via la caisse de retraite ou le département.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Pour les personnes classées GIR 5 ou 6 (autonomie encore bonne) : quelques heures d'aide ménagère, financées par la caisse de retraite ou, sous conditions de ressources, par l'aide sociale du département. Elle ne se cumule pas avec l'APA pour les mêmes heures.</p>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Adapter le logement</div><h3>MaPrimeAdapt'</h3></div></div>
+          <p class="teaser">Finance une grande part des travaux d'adaptation du logement.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Prend en charge 50 à 70 % des travaux d'adaptation selon les revenus : douche de plain-pied, barres d'appui, monte-escalier. Elle peut se cumuler avec l'APA dans certaines limites.</p>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#dcab7e">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-check"/></svg></span>
+            <div class="sum-txt"><div class="cat">À ne pas oublier</div><h3>Autres droits cumulables</h3></div></div>
+          <p class="teaser">ASPA, APL, crédit d'impôt : souvent cumulables entre eux.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <ul>
+            <li>ASPA (minimum vieillesse) pour compléter une petite retraite.</li>
+            <li>APL ou ALS pour le loyer.</li>
+            <li>Crédit d'impôt services à la personne de 50 % (voir plus haut), cumulable avec l'APA.</li>
+          </ul>
+          <p>L'APA n'est pas imposable et n'est pas récupérée sur la succession. Nous faisons le point avec vous, sans rien vous vendre de plus.</p>
+        </div></div>
+      </details>
+    </div>
+    <p class="teaser" style="margin-top:16px">Montants 2026, donnés à titre indicatif ; les barèmes exacts dépendent de votre département et de vos revenus. À confirmer auprès du conseil départemental, de votre caisse de retraite, sur <a href="https://www.pour-les-personnes-agees.gouv.fr" target="_blank" rel="noopener">pour-les-personnes-agees.gouv.fr</a> et <a href="https://www.service-public.fr" target="_blank" rel="noopener">service-public.fr</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="ethic">
+      <span class="eyebrow"><svg class="ico"><use href="#ico-hand-heart"/></svg>Notre engagement</span>
+      <h2>On ne lâche personne</h2>
+      <p>On meurt aussi de solitude et de tristesse. C'est ce manque-là que nous venons combler. Beaucoup de sociétés de ce métier travaillent d'abord pour l'argent : elles sous-traitent, et au premier mois de retard de paiement, les soins s'arrêtent et on ne revoit plus personne. Pas nous.</p>
+      <p>Ici, personne n'est laissé de côté parce que sa retraite est tombée en retard. Si quelqu'un ne peut vraiment pas payer un mois, on continue quand même, et s'il le faut nous prenons le relais. Nous voulons être parmi les moins chers, pas les plus chers, et nous ne gagnons jamais sur la détresse.</p>
+    </div>
+  </div>
+</section>
+
+<section id="realite">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-hand-heart"/></svg>La réalité qu'on préfère ne pas voir</span>
+    <h2>On ne meurt pas que de vieillesse</h2>
+    <p class="lead">En France, la solitude des personnes âgées n'est pas une impression, c'est un chiffre qui grandit. Ces personnes ne sont pas nos clientes : ce sont des gens qui, souvent, ignorent qu'une solution existe.</p>
+    <div class="statgrid">
+      <div class="tier"><div class="amt">750 000</div><p>personnes âgées en « mort sociale » : plus aucun contact.</p></div>
+      <div class="tier"><div class="amt">2 M</div><p>coupées de leur famille et de leurs amis — en hausse de 120 % en huit ans.</p></div>
+      <div class="tier"><div class="amt">2,5 M</div><p>se sentent seules chaque jour, ou presque.</p></div>
+      <div class="tier"><div class="amt">5,7 M</div><p>n'ont personne à qui confier ce qu'elles ressentent.</p></div>
+    </div>
+    <p class="teaser" style="margin-top:16px">Source : <a href="https://www.petitsfreresdespauvres.fr/sinformer/prises-de-position/3e-barometre-de-lisolement-des-personnes-agees-en-france-2025-augmentation-dramatique-de-la-mort-sociale/" target="_blank" rel="noopener">Baromètre 2025 de l'isolement des personnes âgées, Petits Frères des Pauvres</a>.</p>
+  </div>
+</section>
+
+<section id="association" class="asso">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-hand-heart"/></svg>Notre cause · volet associatif</span>
+    <h2>Les tombes que plus personne ne visite</h2>
+    <p class="lead">Quand une famille s'éloigne, une sépulture cesse peu à peu d'être visitée, et finit parfois par être reprise. L'association Sérénité 76 veille bénévolement sur ces tombes esseulées, et cherche les soutiens et les subventions pour leur rendre leur dignité.</p>
+    <div class="grid">
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Ce que fait l'association</div><h3>Veiller, recenser, raviver</h3></div></div>
+          <p class="teaser">Repérer les tombes délaissées, les entretenir, retrouver les familles.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <ul>
+            <li>Recenser, avec les communes, les sépultures menacées de reprise.</li>
+            <li>Les nettoyer et les fleurir bénévolement, pour préserver leur dignité.</li>
+            <li>Rechercher les descendants quand c'est possible, pour renouer le lien.</li>
+            <li>Mobiliser dons, bénévoles et subventions autour de la mémoire.</li>
+          </ul>
+          <div class="situation"><div class="q">Pourquoi</div><p>« Une tombe que plus personne ne visite, c'est une vie que plus personne ne nomme. Y poser une fleur, c'est dire qu'elle a compté. »</p></div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#5f88c6">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-people"/></svg></span>
+            <div class="sum-txt"><div class="cat">Nous rejoindre</div><h3>Donner un peu de temps</h3></div></div>
+          <p class="teaser">Bénévoles, partenaires, communes : chaque main compte.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir le détail</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>L'association accueille les bénévoles pour les journées d'entretien, les partenaires locaux (communes, paroisses, maisons de retraite), et toute personne qui veut soutenir la cause, même d'une heure de son temps.</p>
+          <a class="btn ghost" href="#contact">Devenir bénévole</a>
+        </div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="dons" class="dons">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-gift"/></svg>Soutenir la cause</span>
+    <h2>Faire un don à l'association</h2>
+    <p class="lead">Chaque don va à une tombe esseulée : des fleurs, un nettoyage, une dignité rendue. Choisissez un montant, puis préparez votre don.</p>
+    <div class="tiers">
+      <div class="tier" data-amt="10" role="button" tabindex="0"><div class="amt">10 €</div><p>Des fleurs sur une tombe que plus personne ne peut visiter.</p></div>
+      <div class="tier" data-amt="25" role="button" tabindex="0"><div class="amt">25 €</div><p>Le nettoyage complet d'une sépulture laissée sans soins.</p></div>
+      <div class="tier" data-amt="50" role="button" tabindex="0"><div class="amt">50 €</div><p>Une tombe esseulée entretenue toute une saison.</p></div>
+      <div class="tier libre" data-amt="libre" role="button" tabindex="0"><div class="amt">Libre</div><p>Le montant que votre cœur choisit.</p></div>
+    </div>
+    <div id="don-libre" class="rdv" hidden style="margin-top:16px">
+      <label for="don-montant">Montant de votre don (€)<input id="don-montant" type="number" min="1" inputmode="numeric" placeholder="ex. 15"></label>
+    </div>
+    <div class="don-cta">
+      <button type="button" id="don-go" class="btn gold"><svg class="ico"><use href="#ico-gift"/></svg>Préparer mon don</button>
+      <p class="don-note">Le paiement en ligne sera disponible dès l'ouverture du compte de l'association (plateforme sécurisée type HelloAsso).</p>
+    </div>
+    <p id="don-out" class="out" hidden></p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-cal"/></svg>Prendre rendez-vous</span>
+    <h2>Choisissez une date, puis parlons-en</h2>
+    <p class="lead">Les dates en vert sont disponibles, celles en rouge ne le sont pas. Choisissez un jour, remplissez le formulaire, et nous vous rappelons.</p>
+
+    <div class="cal-wrap">
+      <div class="cal-head">
+        <button type="button" id="cal-prev" class="cal-nav" aria-label="Mois précédent">&lsaquo;</button>
+        <div id="cal-title" class="cal-title"></div>
+        <button type="button" id="cal-next" class="cal-nav" aria-label="Mois suivant">&rsaquo;</button>
+      </div>
+      <div id="cal" class="cal"></div>
+      <div class="cal-legend"><span class="lg av">Disponible</span><span class="lg bz">Indisponible</span></div>
+      <div id="sel-date" class="sel-date"></div>
+    </div>
+
+    <form id="rdv" class="rdv" novalidate>
+      <h3 class="rdv-h">Demander un devis ou un rendez-vous</h3>
+      <div class="rdv-row">
+        <label for="r-nom">Votre nom<input id="r-nom" name="nom" type="text" autocomplete="name"></label>
+        <label for="r-tel">Téléphone<input id="r-tel" name="tel" type="tel" autocomplete="tel"></label>
+      </div>
+      <label for="r-date">Date souhaitée<input id="r-date" name="date" type="text" readonly placeholder="Choisissez une date verte ci-dessus"></label>
+      <label for="r-obj">Ce dont vous avez besoin
+        <select id="r-obj" name="objet">
+          <option>Demande de devis</option>
+          <option>Prendre rendez-vous</option>
+          <option>Entretien de tombe</option>
+          <option>Faire livrer des fleurs</option>
+          <option>Accompagnement au cimetière</option>
+          <option>Recueillement en vidéo</option>
+          <option>Visite de convivialité</option>
+          <option>Veille bienveillante</option>
+          <option>Prévoyance longue durée</option>
+          <option>Aide aux démarches</option>
+        </select>
+      </label>
+      <label for="r-lieu">Cimetière ou commune<input id="r-lieu" name="lieu" type="text"></label>
+      <label for="r-msg">Votre message<textarea id="r-msg" name="msg" rows="3"></textarea></label>
+      <div class="don-cta"><button type="submit" class="btn primary"><svg class="ico"><use href="#ico-file"/></svg>Préparer ma demande</button></div>
+      <p class="rdv-out" hidden></p>
+    </form>
+
+    <div class="contact-grid">
+      <div class="ph todo"><div class="k">Téléphone</div><div class="v">à compléter</div></div>
+      <div class="ph todo"><div class="k">E-mail</div><div class="v">à compléter</div></div>
+      <div class="ph"><div class="k">Zone d'intervention</div><div class="v">Le Havre &amp; agglomération</div></div>
+      <div class="ph"><div class="k">Adresse</div><div class="v">18 rue Pierre Le Tourneur, 76600 Le Havre</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="mentions">
+  <div class="wrap">
+    <span class="eyebrow"><svg class="ico"><use href="#ico-file"/></svg>Informations légales</span>
+    <h2>Mentions légales</h2>
+    <div class="contact-grid">
+      <div class="ph"><div class="k">Éditeur</div><div class="v">Sérénité 76 · SIRET 932 825 847 00019</div></div>
+      <div class="ph"><div class="k">Siège</div><div class="v">18 rue Pierre Le Tourneur, 76600 Le Havre</div></div>
+      <div class="ph"><div class="k">Activité</div><div class="v">Entretien de sépultures · Services à la personne</div></div>
+      <div class="ph todo"><div class="k">Responsable de la publication</div><div class="v">à compléter</div></div>
+      <div class="ph todo"><div class="k">Hébergeur du site</div><div class="v">à compléter</div></div>
+      <div class="ph"><div class="k">TVA</div><div class="v">Non applicable, art. 293 B du CGI (à confirmer)</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Sérénité 76</strong> — Entretien de sépultures &amp; accompagnement des familles · Le Havre et agglomération.<br>
+    18 rue Pierre Le Tourneur, 76600 Le Havre · SIRET 932 825 847 00019 · Services à la personne.
+    <span class="note">Avant-projet. À finaliser avant mise en ligne : téléphone, e-mail, hébergeur, responsable de publication, page de dons de l'association, et ajout de l'activité « entretien de sépulture » au registre de la société.</span>
+  </div>
+</footer>
+
+<div class="a11y" role="group" aria-label="Taille du texte">
+  <span class="a11y-lbl">Texte</span>
+  <button type="button" class="s" data-fz="1" title="Normal">A</button>
+  <button type="button" class="m" data-fz="1.18" title="Grand">A</button>
+  <button type="button" class="l" data-fz="1.35" title="Très grand">A</button>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  // Taille du texte
+  function setFz(v){
+    try{root.style.setProperty('--fz',v);}catch(_){}
+    try{localStorage.setItem('s76fz',v);}catch(_){}
+    var bs=document.querySelectorAll('.a11y button');
+    for(var i=0;i<bs.length;i++){bs[i].classList.toggle('on',bs[i].getAttribute('data-fz')===String(v));}
+  }
+  try{var sv=localStorage.getItem('s76fz');if(sv)setFz(sv);}catch(_){}
+  var ab=document.querySelectorAll('.a11y button');
+  for(var j=0;j<ab.length;j++){(function(b){b.addEventListener('click',function(){setFz(b.getAttribute('data-fz'));});})(ab[j]);}
+
+  // Menu
+  var navEl=document.querySelector('nav.top'),mb=document.getElementById('menu-btn');
+  function closeMenu(){if(navEl)navEl.classList.remove('open');if(mb)mb.setAttribute('aria-expanded','false');}
+  if(mb)mb.addEventListener('click',function(e){e.stopPropagation();var o=navEl.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('click',function(e){if(navEl&&navEl.classList.contains('open')&&!navEl.contains(e.target))closeMenu();});
+
+  // Défilement doux + fermeture du menu
+  function topOffset(){var n=document.querySelector('nav.top');return (n?n.getBoundingClientRect().height:0)+12;}
+  var anchors=document.querySelectorAll('a[href^="#"]');
+  for(var k=0;k<anchors.length;k++){(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');if(!id||id.length<2)return;
+      var el=document.getElementById(id.slice(1));if(!el)return;
+      e.preventDefault();closeMenu();
+      var y=el.getBoundingClientRect().top+window.pageYOffset-topOffset();
+      try{window.scrollTo({top:y,behavior:'smooth'});}catch(_){window.scrollTo(0,y);}
+      if(history&&history.replaceState)history.replaceState(null,'',id);
+    });
+  })(anchors[k]);}
+
+  // Mise en avant de l'onglet actif
+  var links=[].slice.call(document.querySelectorAll('.links a'));
+  var map={};links.forEach(function(l){var h=l.getAttribute('href');if(h&&h.length>1){var s=document.getElementById(h.slice(1));if(s)map[s.id]=l;}});
+  var secs=Object.keys(map).map(function(key){return document.getElementById(key);});
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var l=map[en.target.id];if(l)l.classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  }
+
+  // Calendrier des rendez-vous
+  var cal=document.getElementById('cal'),calTitle=document.getElementById('cal-title'),selInfo=document.getElementById('sel-date');
+  var MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  var DOW=['L','M','M','J','V','S','D'];
+  var today=new Date();today.setHours(0,0,0,0);
+  var view=new Date(today.getFullYear(),today.getMonth(),1);
+  var minMonth=new Date(today.getFullYear(),today.getMonth(),1);
+  var maxMonth=new Date(today.getFullYear(),today.getMonth()+2,1);
+  function pad(n){return (n<10?'0':'')+n;}
+  function build(){
+    if(!cal)return;cal.innerHTML='';
+    var y=view.getFullYear(),m=view.getMonth();
+    if(calTitle)calTitle.textContent=MONTHS[m]+' '+y;
+    for(var i=0;i<7;i++){var h=document.createElement('div');h.className='cal-dow';h.textContent=DOW[i];cal.appendChild(h);}
+    var startDow=(new Date(y,m,1).getDay()+6)%7;
+    for(var e=0;e<startDow;e++){var em=document.createElement('div');em.className='cal-cell empty';cal.appendChild(em);}
+    var days=new Date(y,m+1,0).getDate();
+    for(var d=1;d<=days;d++){
+      var cell=document.createElement('button');cell.type='button';cell.textContent=d;
+      var dt=new Date(y,m,d);var dow=dt.getDay();
+      if(dt<today){cell.className='cal-cell off';cell.disabled=true;}
+      else if(dow===0){cell.className='cal-cell busy';cell.disabled=true;cell.title='Fermé le dimanche';}
+      else{
+        cell.className='cal-cell avail';
+        (function(dt,cell){cell.addEventListener('click',function(){
+          var prev=cal.querySelector('.cal-cell.sel');if(prev){prev.classList.remove('sel');prev.classList.add('avail');}
+          cell.classList.remove('avail');cell.classList.add('sel');
+          var s=pad(dt.getDate())+'/'+pad(dt.getMonth()+1)+'/'+dt.getFullYear();
+          if(selInfo)selInfo.textContent='Date choisie : '+s;
+          var hid=document.getElementById('r-date');if(hid)hid.value=s;
+        });})(dt,cell);
+      }
+      cal.appendChild(cell);
+    }
+  }
+  var pv=document.getElementById('cal-prev'),nx=document.getElementById('cal-next');
+  if(pv)pv.addEventListener('click',function(){var t=new Date(view.getFullYear(),view.getMonth()-1,1);if(t>=minMonth){view=t;build();}});
+  if(nx)nx.addEventListener('click',function(){var t=new Date(view.getFullYear(),view.getMonth()+1,1);if(t<=maxMonth){view=t;build();}});
+  build();
+
+  // Fleurs
+  var fleurOut=document.getElementById('fleur-out');
+  var chooses=document.querySelectorAll('#fleurs .choose');
+  for(var f=0;f<chooses.length;f++){(function(el){el.addEventListener('click',function(){
+    var nom=el.getAttribute('data-nom'),prix=el.getAttribute('data-prix');
+    if(fleurOut){fleurOut.hidden=false;fleurOut.textContent='Choisi : '+nom+(prix?' — '+prix+' €':' — sur devis')+'. Livraison, dépôt sur la tombe et photo compris sur Le Havre. Indiquez le cimetière et la date dans le formulaire de contact, puis préparez votre demande.';
+      try{fleurOut.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}}
+  });})(chooses[f]);}
+
+  // Dons
+  var donAmt=null;
+  var tiers=document.querySelectorAll('#dons .tier');
+  for(var t2=0;t2<tiers.length;t2++){(function(el){el.addEventListener('click',function(){
+    for(var u=0;u<tiers.length;u++)tiers[u].classList.remove('on');
+    el.classList.add('on');donAmt=el.getAttribute('data-amt');
+    var free=document.getElementById('don-libre');if(free)free.hidden=(donAmt!=='libre');
+    var out=document.getElementById('don-out');if(out)out.hidden=true;
+  });})(tiers[t2]);}
+  var donGo=document.getElementById('don-go');
+  if(donGo)donGo.addEventListener('click',function(){
+    var a=donAmt;
+    if(donAmt==='libre'){var inp=document.getElementById('don-montant');a=inp&&inp.value?inp.value:'';}
+    var out=document.getElementById('don-out');if(!out)return;
+    if(!donAmt){out.hidden=false;out.textContent='Choisissez d\'abord un montant ci-dessus.';return;}
+    out.hidden=false;
+    out.textContent='Merci. Votre intention de don est prête :\n\nDon à l\'association Sérénité 76\nMontant : '+(a?a+' €':'(à préciser)')+'\n\nLe paiement en ligne sera disponible dès l\'ouverture du compte de l\'association. Vous pouvez aussi nous contacter via le formulaire.';
+  });
+
+  // Formulaire de demande
+  var form=document.getElementById('rdv');
+  if(form){form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=new FormData(form);
+    var t='Demande — Sérénité 76\n'
+      +'Nom : '+(d.get('nom')||'—')+'\n'
+      +'Téléphone : '+(d.get('tel')||'—')+'\n'
+      +'Date souhaitée : '+(d.get('date')||'—')+'\n'
+      +'Besoin : '+(d.get('objet')||'—')+'\n'
+      +'Cimetière / commune : '+(d.get('lieu')||'—')+'\n'
+      +'Message : '+(d.get('msg')||'—');
+    var out=form.querySelector('.rdv-out');
+    function show(ok){out.hidden=false;out.textContent=(ok?'Votre demande est copiée. ':'Votre demande est prête. ')+'Envoyez-la par téléphone ou e-mail (coordonnées ci-dessous), ou nous la recevrons dès que l\'adresse e-mail sera en place :\n\n'+t;}
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){show(true);},function(){show(false);});}
+      else{show(false);}
+    }catch(_){show(false);}
+  });}
+})();
+</script>
