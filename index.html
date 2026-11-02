@@ -76,13 +76,11 @@
     background:radial-gradient(52% 50% at 78% 16%,var(--halo-b),transparent 70%),radial-gradient(50% 46% at 16% 8%,var(--halo-a),transparent 72%);
     animation:drift 24s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.07)}}
-  .hero .gull{position:absolute;color:var(--accent-deep);opacity:.5;pointer-events:none;z-index:1}
-  .hero .gull svg{display:block;width:100%;height:auto;stroke-width:1.3}
-  .hero .g1{top:12px;right:15%;width:38px;animation:gullA 9s ease-in-out infinite}
-  .hero .g2{top:32px;right:31%;width:24px;animation:gullB 11s ease-in-out infinite}
-  .hero .g3{top:6px;right:46%;width:30px;animation:gullA 10s ease-in-out infinite reverse}
-  @keyframes gullA{0%,100%{transform:translate(0,0)}50%{transform:translate(9px,-6px)}}
-  @keyframes gullB{0%,100%{transform:translate(0,0)}50%{transform:translate(-8px,-5px)}}
+  .hero .sun .gull{transform-box:fill-box;transform-origin:center;animation:gullA 9s ease-in-out infinite}
+  .hero .sun .gull.b{animation:gullB 11s ease-in-out infinite}
+  .hero .sun .gull.c{animation:gullA 10s ease-in-out infinite reverse}
+  @keyframes gullA{0%,100%{transform:translate(0px,0px)}50%{transform:translate(5px,-4px)}}
+  @keyframes gullB{0%,100%{transform:translate(0px,0px)}50%{transform:translate(-5px,-3px)}}
   .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;padding-block:clamp(48px,9vw,88px)}
   .hero .sun{width:min(260px,46vw);height:auto;color:var(--gold);justify-self:center}
   .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
@@ -219,11 +217,11 @@
   @media (max-width:640px){
     .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
     .tiers,.statgrid,.flowers{grid-template-columns:1fr 1fr}
-    .hero .wrap{grid-template-columns:1fr}.hero .sun{display:none}
+    .hero .wrap{grid-template-columns:1fr}.hero .sun{width:min(240px,70vw)}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    header.hero .halo,.hero .gull{animation:none}
+    header.hero .halo,.hero .sun .gull{animation:none}
     details.card,.tier,.flower,.btn{transition:none}
     details[open] .reveal{animation:none}
   }
@@ -265,9 +263,6 @@
 
 <header class="hero" id="accueil">
   <div class="halo"></div>
-  <span class="gull g1"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
-  <span class="gull g2"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
-  <span class="gull g3"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
   <div class="wrap">
     <div>
       <div class="eyebrow"><svg class="ico"><use href="#ico-sun"/></svg>Le Havre &amp; agglomération</div>
@@ -288,6 +283,9 @@
       <circle cx="176" cy="70" r="30" fill="currentColor" opacity="0.12" stroke="none"/>
       <circle cx="176" cy="70" r="30"/>
       <g stroke-width="1.4"><path d="M176 26V18M176 122v8M122 70h-8M238 70h8M139 33l-6-6M213 107l6 6M139 107l-6 6M213 33l6-6"/></g>
+      <g class="gull" stroke-width="1.3"><use href="#ico-gull" x="26" y="36" width="30" height="11"/></g>
+      <g class="gull b" stroke-width="1.3"><use href="#ico-gull" x="74" y="22" width="24" height="9"/></g>
+      <g class="gull c" stroke-width="1.3"><use href="#ico-gull" x="116" y="42" width="28" height="10"/></g>
       <path d="M84 190 88 112 92 84 97 60 102 84 106 112 110 190Z"/>
       <path d="M90 152h14M91 128h12M94 102h6M97 60V50M92 55h10"/>
       <path stroke-width="1.5" d="M212 190V118M212 118h34M240 118v16M212 130h18"/>
