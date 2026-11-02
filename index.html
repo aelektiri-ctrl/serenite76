@@ -114,7 +114,7 @@
   details.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;min-width:0;overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;position:relative}
   details.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--c,var(--accent))}
   details.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-  details.card[open]{box-shadow:var(--shadow)}
+  details.card[open]{box-shadow:var(--shadow);grid-column:1/-1}
   summary{list-style:none;cursor:pointer;padding:20px 22px 20px 24px;display:block}
   summary::-webkit-details-marker{display:none}
   .sum-head{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
@@ -128,6 +128,7 @@
   .teaser{font-size:.92rem;color:var(--muted);margin:.7em 0 0}
   summary .teaser{display:none}
   a.tier{text-decoration:none;color:inherit;display:block}
+  #fleurs .badge{display:none}
   .more{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:var(--c,var(--accent-deep));margin-top:12px}
   .more .plus{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;border:1.5px solid currentColor;font-size:.95rem;line-height:1;transition:transform .25s}
   details.card[open] .more .plus{transform:rotate(45deg)}
@@ -136,7 +137,8 @@
   .reveal>div{border-top:1px solid var(--line);padding-top:14px}
   details[open] .reveal{animation:open .3s ease}
   @keyframes open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-  .reveal p{font-size:.94rem;color:var(--fg);opacity:.9}
+  .reveal p{font-size:.94rem;color:var(--fg);opacity:.9;max-width:74ch}
+  .reveal ul{max-width:74ch}
   .reveal ul{margin:.5em 0 0;padding-left:1.1em;font-size:.9rem;color:var(--muted)}
   .reveal li{margin:.26em 0}
   .situation{background:var(--surface-2);border-left:3px solid var(--c,var(--accent));border-radius:0 12px 12px 0;padding:13px 16px;margin-top:15px}
@@ -572,15 +574,16 @@
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
             <div class="sum-txt"><div class="cat">Cérémonie</div><h3>Couronne</h3></div>
-            <div class="price">dès 80 €</div></div>
+            <div class="price">dès 30 €</div></div>
           <p class="teaser">Couronne de fleurs, selon votre budget.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Couronne ronde de fleurs fraîches, pour des obsèques. Nous vous montrons des modèles avant de commander.</p>
+          <p>Couronne ronde de fleurs fraîches, pour des obsèques. Il y en a à tous les prix : dites-nous votre budget, et nous composons la plus belle couronne possible pour cette somme. Nous vous montrons des modèles avant de commander.</p>
           <div class="opts">
-            <button type="button" class="btn ghost choose" data-nom="Couronne" data-prix="80">Couronne — 80 €</button>
-            <button type="button" class="btn ghost choose" data-nom="Grande couronne" data-prix="">Grande couronne — devis</button>
+            <button type="button" class="btn ghost choose" data-nom="Petite couronne" data-prix="30">Petite — dès 30 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Couronne moyenne" data-prix="55">Moyenne — dès 55 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Grande couronne" data-prix="80">Grande — dès 80 €</button>
           </div>
         </div></div>
       </details>
