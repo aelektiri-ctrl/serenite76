@@ -65,7 +65,7 @@
   .links a.don{color:#fff;background:var(--accent);margin-top:4px}
   .links a.don:hover,.links a.don.active{background:var(--accent-deep);color:#fff}
 
-  .a11y{position:fixed;z-index:38;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);padding:6px 11px}
+  .a11y{display:inline-flex;align-items:center;gap:5px;margin-top:9px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
   .a11y-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:9px;cursor:pointer;padding:4px 10px;line-height:1.1;min-width:32px}
   .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft)}
@@ -83,9 +83,9 @@
   @keyframes gullB{0%,100%{transform:translate(0px,0px)}50%{transform:translate(-5px,-3px)}}
   .hero .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;padding-block:clamp(44px,9vw,84px)}
   .hero .sun{width:clamp(116px,30vw,168px);height:auto;color:var(--gold);justify-self:end;margin-top:4px}
-  .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
+  .hero .mark{font-family:var(--serif);font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.05;letter-spacing:.015em}
   .hero .mark b{color:var(--accent-deep)}
-  .hero .lede{font-family:var(--serif);font-size:clamp(1.4rem,4.6vw,2.1rem);max-width:18ch;margin-top:.3em;color:var(--fg)}
+  .hero .lede{font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.35rem);max-width:34ch;margin-top:.55em;color:var(--fg)}
   .hero .sub{color:var(--fg);opacity:.82;max-width:48ch;margin-top:1em;font-size:1.04rem}
   .hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.6em}
   .assure{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4em}
@@ -109,7 +109,7 @@
   .step h3{margin:.5em 0 .15em;font-size:1rem;font-family:var(--sans);font-weight:700}
   .step p{font-size:.9rem;color:var(--muted);margin:0}
 
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:14px;margin-top:22px;align-items:start}
 
   details.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;min-width:0;overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;position:relative}
   details.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--c,var(--accent))}
@@ -117,13 +117,13 @@
   details.card[open]{box-shadow:var(--shadow)}
   summary{list-style:none;cursor:pointer;padding:20px 22px 20px 24px;display:block}
   summary::-webkit-details-marker{display:none}
-  .sum-head{display:flex;align-items:flex-start;gap:13px}
+  .sum-head{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
   .sum-head .badge{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--c,var(--accent-deep))}
   .sum-head .badge svg{width:23px;height:23px}
   .sum-txt{flex:1;min-width:0}
   .cat{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--c,var(--accent))}
   .sum-txt h3{font-family:var(--sans);font-weight:700;font-size:1.08rem;margin-top:.15em}
-  .price{font-family:var(--serif);font-size:1.22rem;color:var(--fg);white-space:nowrap;padding-top:2px}
+  .price{font-family:var(--serif);font-size:1.1rem;color:var(--accent-deep);white-space:nowrap}
   .price small{font-family:var(--sans);font-size:.7rem;color:var(--muted);font-weight:600}
   .teaser{font-size:.92rem;color:var(--muted);margin:.7em 0 0}
   .more{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:var(--c,var(--accent-deep));margin-top:12px}
@@ -218,8 +218,8 @@
   .note{display:block;font-size:.82rem;color:var(--gold);margin-top:12px;max-width:62ch}
 
   @media (max-width:640px){
-    .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
-    .tiers,.statgrid{grid-template-columns:1fr 1fr}
+    .rdv-row{grid-template-columns:1fr}
+    .grid,.steps,.contact-grid,.tiers,.statgrid{grid-template-columns:1fr 1fr}
     .hero .sun{width:clamp(104px,30vw,140px)}
   }
   @media (prefers-reduced-motion:reduce){
@@ -270,7 +270,13 @@
     <div>
       <div class="eyebrow"><svg class="ico"><use href="#ico-sun"/></svg>Le Havre &amp; agglomération</div>
       <div class="mark">Sérénité <b>76</b></div>
-      <div class="lede">Veiller sur ceux qui restent, et sur ceux qui reposent.</div>
+      <div class="a11y" role="group" aria-label="Taille du texte">
+        <span class="a11y-lbl">Texte</span>
+        <button type="button" class="s" data-fz="1" title="Normal">A</button>
+        <button type="button" class="m" data-fz="1.2" title="Grand">A</button>
+        <button type="button" class="l" data-fz="1.4" title="Très grand">A</button>
+      </div>
+      <div class="lede">Veiller sur les vivants, honorer la mémoire des disparus.</div>
       <p class="sub">La distance, l'âge, la maladie éloignent parfois d'une tombe que l'on aime. Nous en prenons soin à votre place, avec douceur, et nous vous envoyons une photo à chaque passage.</p>
       <div class="cta-row">
         <a class="btn primary" href="#sepultures"><svg class="ico"><use href="#ico-leaf"/></svg>Découvrir nos soins</a>
@@ -1035,13 +1041,6 @@
     <span class="note">Avant-projet. À finaliser avant mise en ligne : téléphone, e-mail, hébergeur, responsable de publication, page de dons de l'association, et ajout de l'activité « entretien de sépulture » au registre de la société.</span>
   </div>
 </footer>
-
-<div class="a11y" role="group" aria-label="Taille du texte">
-  <span class="a11y-lbl">Texte</span>
-  <button type="button" class="s" data-fz="1" title="Normal">A</button>
-  <button type="button" class="m" data-fz="1.2" title="Grand">A</button>
-  <button type="button" class="l" data-fz="1.4" title="Très grand">A</button>
-</div>
 
 <script>
 (function(){
