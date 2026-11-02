@@ -37,7 +37,7 @@
     color-scheme:dark;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;font-size:calc(100% * var(--fz,1))}
+  html{scroll-behavior:smooth;font-size:calc(107% * var(--fz,1))}
   body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1.02rem;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased}
   body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:40}
   .wrap{max-width:960px;margin:0 auto;
@@ -67,15 +67,22 @@
 
   .a11y{position:fixed;z-index:38;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);padding:6px 11px}
   .a11y-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:8px;cursor:pointer;padding:1px 9px;line-height:1.2}
-  .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent)}
-  .a11y .s{font-size:.78rem}.a11y .m{font-size:.98rem}.a11y .l{font-size:1.18rem}
+  .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:10px;cursor:pointer;padding:7px 15px;line-height:1.1;min-width:42px}
+  .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft)}
+  .a11y .s{font-size:.95rem}.a11y .m{font-size:1.2rem}.a11y .l{font-size:1.5rem}
 
   header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);scroll-margin-top:70px;background:linear-gradient(180deg,var(--halo-a),var(--bg) 82%)}
   header.hero .halo{position:absolute;inset:-45% -15% auto;height:130%;pointer-events:none;opacity:.85;
     background:radial-gradient(52% 50% at 78% 16%,var(--halo-b),transparent 70%),radial-gradient(50% 46% at 16% 8%,var(--halo-a),transparent 72%);
     animation:drift 24s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.07)}}
+  .hero .gull{position:absolute;color:var(--accent-deep);opacity:.5;pointer-events:none;z-index:1}
+  .hero .gull svg{display:block;width:100%;height:auto;stroke-width:1.3}
+  .hero .g1{top:12px;right:15%;width:38px;animation:gullA 9s ease-in-out infinite}
+  .hero .g2{top:32px;right:31%;width:24px;animation:gullB 11s ease-in-out infinite}
+  .hero .g3{top:6px;right:46%;width:30px;animation:gullA 10s ease-in-out infinite reverse}
+  @keyframes gullA{0%,100%{transform:translate(0,0)}50%{transform:translate(9px,-6px)}}
+  @keyframes gullB{0%,100%{transform:translate(0,0)}50%{transform:translate(-8px,-5px)}}
   .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;padding-block:clamp(48px,9vw,88px)}
   .hero .sun{width:min(260px,46vw);height:auto;color:var(--gold);justify-self:center}
   .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
@@ -216,7 +223,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    header.hero .halo{animation:none}
+    header.hero .halo,.hero .gull{animation:none}
     details.card,.tier,.flower,.btn{transition:none}
     details[open] .reveal{animation:none}
   }
@@ -237,6 +244,7 @@
   <symbol id="ico-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
   <symbol id="ico-hand-heart" viewBox="0 0 24 24"><path d="M4 13c3 5 11 6 16 1"/><path d="M12 10s-3-2-4.5-.5S9 13 12 13s4.5-2 4.5-3.5S13 8 12 10Z"/></symbol>
   <symbol id="ico-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></symbol>
+  <symbol id="ico-gull" viewBox="0 0 32 12"><path d="M2 7C7 1 12 1 16 6C20 1 25 1 30 7"/></symbol>
 </svg>
 
 <nav class="top">
@@ -257,6 +265,9 @@
 
 <header class="hero" id="accueil">
   <div class="halo"></div>
+  <span class="gull g1"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
+  <span class="gull g2"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
+  <span class="gull g3"><svg class="ico" viewBox="0 0 32 12"><use href="#ico-gull"/></svg></span>
   <div class="wrap">
     <div>
       <div class="eyebrow"><svg class="ico"><use href="#ico-sun"/></svg>Le Havre &amp; agglomération</div>
