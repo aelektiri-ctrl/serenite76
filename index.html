@@ -218,15 +218,8 @@
   .note{display:block;font-size:.82rem;color:var(--gold);margin-top:12px;max-width:62ch}
 
   @media (max-width:640px){
-    .rdv-row,.steps{grid-template-columns:1fr}
-    .grid,.contact-grid,.tiers,.statgrid{grid-template-columns:1fr 1fr}
-    summary{padding:14px 13px 14px 15px}
-    .sum-head{gap:9px}
-    .sum-head .badge{width:34px;height:34px}
-    .sum-head .badge svg{width:19px;height:19px}
-    .sum-txt h3{font-size:1rem}
-    .price{font-size:1.02rem}
-    .reveal{padding:4px 14px 18px 15px}
+    .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
+    .tiers,.statgrid{grid-template-columns:1fr 1fr}
     .hero .sun{width:clamp(104px,30vw,140px)}
   }
   @media (prefers-reduced-motion:reduce){
@@ -1145,21 +1138,24 @@
   // Dons
   var donAmt=null;
   var tiers=document.querySelectorAll('#dons .tier');
+  function showDon(){
+    var out=document.getElementById('don-out');if(!out)return;
+    if(!donAmt){out.hidden=false;out.textContent='Choisissez d\'abord un montant ci-dessus.';return;}
+    var a=donAmt;
+    if(donAmt==='libre'){var inp=document.getElementById('don-montant');a=inp&&inp.value?inp.value:'';}
+    out.hidden=false;
+    out.textContent='Merci. Don à l\'association Sérénité 76 — montant : '+(a?a+' €':(donAmt==='libre'?'à saisir ci-dessus':'(à préciser)'))+'.\nLe paiement en ligne sera disponible dès l\'ouverture du compte de l\'association ; vous pouvez aussi nous contacter via le formulaire.';
+    try{out.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(_){}
+  }
   for(var t2=0;t2<tiers.length;t2++){(function(el){el.addEventListener('click',function(){
     for(var u=0;u<tiers.length;u++)tiers[u].classList.remove('on');
     el.classList.add('on');donAmt=el.getAttribute('data-amt');
     var free=document.getElementById('don-libre');if(free)free.hidden=(donAmt!=='libre');
-    var out=document.getElementById('don-out');if(out)out.hidden=true;
+    if(donAmt==='libre'){var o=document.getElementById('don-out');if(o)o.hidden=true;var inp=document.getElementById('don-montant');if(inp){try{inp.focus();}catch(_){}}}
+    else{showDon();}
   });})(tiers[t2]);}
   var donGo=document.getElementById('don-go');
-  if(donGo)donGo.addEventListener('click',function(){
-    var a=donAmt;
-    if(donAmt==='libre'){var inp=document.getElementById('don-montant');a=inp&&inp.value?inp.value:'';}
-    var out=document.getElementById('don-out');if(!out)return;
-    if(!donAmt){out.hidden=false;out.textContent='Choisissez d\'abord un montant ci-dessus.';return;}
-    out.hidden=false;
-    out.textContent='Merci. Votre intention de don est prête :\n\nDon à l\'association Sérénité 76\nMontant : '+(a?a+' €':'(à préciser)')+'\n\nLe paiement en ligne sera disponible dès l\'ouverture du compte de l\'association. Vous pouvez aussi nous contacter via le formulaire.';
-  });
+  if(donGo)donGo.addEventListener('click',showDon);
 
   // Formulaire de demande
   var form=document.getElementById('rdv');
