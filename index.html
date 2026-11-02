@@ -210,6 +210,9 @@
   .rdv .btn{border:none}
   .rdv-out{white-space:pre-wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-size:.9rem;color:var(--fg)}
 
+  .cat-h{font-family:var(--serif);font-weight:400;color:var(--accent-deep);font-size:1.35rem;margin-top:30px;margin-bottom:-6px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .opts .btn{border:1px solid var(--line);padding:9px 15px;font-size:.88rem}
   footer{padding-block:32px 72px;color:var(--muted);font-size:.85rem}
   footer strong{color:var(--fg)}
   .note{display:block;font-size:.82rem;color:var(--gold);margin-top:12px;max-width:62ch}
@@ -397,97 +400,144 @@
   <div class="wrap">
     <span class="eyebrow"><svg class="ico"><use href="#ico-flower"/></svg>Un geste simple</span>
     <h2>Faire livrer des fleurs</h2>
-    <p class="lead">Par amour, par foi, ou simplement parce qu'on pense à quelqu'un : nous déposons des fleurs sur la tombe à votre place, sans que vous ayez à vous déplacer, et nous vous envoyons la photo. Choisissez une composition.</p>
+    <p class="lead">Par amour, par foi, ou simplement parce qu'on pense à quelqu'un : nous déposons à votre place, sans que vous ayez à vous déplacer, et nous vous envoyons la photo. Choisissez ci-dessous — et si une fleur précise n'est pas dans la liste, demandez-la, on l'obtient.</p>
+
+    <h3 class="cat-h">Fleurs fraîches</h3>
     <div class="grid">
       <details class="card" style="--c:#d98ba6">
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Fleurs fraîches</div><h3>Bouquet de saison</h3></div>
-            <div class="price">25 €</div></div>
-          <p class="teaser">Les plus belles fleurs du moment, couleur au choix.</p>
+            <div class="sum-txt"><div class="cat">Classique</div><h3>Roses</h3></div>
+            <div class="price">dès 6 €</div></div>
+          <p class="teaser">À l'unité ou en bouquet, couleur au choix.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Un bouquet frais composé selon la saison. Vous choisissez l'ambiance : tons blancs et purs, pastel doux, ou couleurs vives et joyeuses.</p>
-          <button type="button" class="btn ghost choose" data-nom="Bouquet de saison" data-prix="25">Choisir cette composition</button>
+          <p>Roses fraîches, couleur au choix : blanc, rouge, rose, jaune ou mélange. Choisissez la quantité.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="1 rose" data-prix="6">1 rose — 6 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de 5 roses" data-prix="22">5 roses — 22 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de 12 roses" data-prix="42">12 roses — 42 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de 24 roses" data-prix="78">24 roses — 78 €</button>
+          </div>
         </div></div>
       </details>
       <details class="card" style="--c:#d98ba6">
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Classique</div><h3>Bouquet de roses</h3></div>
-            <div class="price">30 €</div></div>
-          <p class="teaser">Des roses, couleur au choix. Simple et fort.</p>
+            <div class="sum-txt"><div class="cat">Du moment</div><h3>Bouquet de saison</h3></div>
+            <div class="price">dès 20 €</div></div>
+          <p class="teaser">Les plus belles fleurs du moment, trois tailles.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Un bouquet de roses fraîches, blanches, rouges ou roses selon le message que vous voulez porter. Une rose seule est aussi possible, pour un geste discret.</p>
-          <button type="button" class="btn ghost choose" data-nom="Bouquet de roses" data-prix="30">Choisir cette composition</button>
+          <p>Composé selon la saison, dans l'ambiance que vous aimez : blanc et pur, pastel doux, ou couleurs vives.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de saison (petit)" data-prix="20">Petit — 20 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de saison (moyen)" data-prix="30">Moyen — 30 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de saison (grand)" data-prix="45">Grand — 45 €</button>
+          </div>
         </div></div>
       </details>
       <details class="card" style="--c:#d98ba6">
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Tient longtemps</div><h3>Composition sur mousse</h3></div>
-            <div class="price">45 €</div></div>
-          <p class="teaser">Montée sur mousse, elle dure. Idéale pour la Toussaint.</p>
+            <div class="sum-txt"><div class="cat">Pureté</div><h3>Lys</h3></div>
+            <div class="price">dès 28 €</div></div>
+          <p class="teaser">Le lys, fleur du souvenir et de la paix.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Une composition travaillée, montée sur mousse humide, qui tient plusieurs semaines. Parfaite quand on ne peut pas revenir souvent.</p>
-          <button type="button" class="btn ghost choose" data-nom="Composition sur mousse" data-prix="45">Choisir cette composition</button>
-        </div></div>
-      </details>
-      <details class="card" style="--c:#dcab7e">
-        <summary>
-          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Toussaint</div><h3>Chrysanthèmes en pot</h3></div>
-            <div class="price">35 €</div></div>
-          <p class="teaser">Le classique de la Toussaint, robuste et généreux.</p>
-          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
-        </summary>
-        <div class="reveal"><div>
-          <p>Un beau pot de chrysanthèmes, choisi dans la couleur que vous aimez, déposé et calé sur la sépulture. Résistant au froid de novembre.</p>
-          <button type="button" class="btn ghost choose" data-nom="Chrysanthèmes en pot" data-prix="35">Choisir cette composition</button>
+          <p>Bouquet de lys blancs, parfumés, pour un hommage sobre et solennel.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Bouquet de lys" data-prix="28">Bouquet — 28 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Grande gerbe de lys" data-prix="48">Grande gerbe — 48 €</button>
+          </div>
         </div></div>
       </details>
       <details class="card" style="--c:#6fa882">
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Élégante &amp; durable</div><h3>Orchidée en pot</h3></div>
+            <div class="sum-txt"><div class="cat">Plantes</div><h3>Plante fleurie</h3></div>
+            <div class="price">dès 18 €</div></div>
+          <p class="teaser">Bégonia, azalée, cyclamen… ou la plante que vous voulez.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Une plante fleurie en pot, qui dure et refleurit. Vous aimez les bégonias, les azalées, les cyclamens ? Dites-nous, on l'obtient.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Bégonia en pot" data-prix="18">Bégonia — 18 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Azalée en pot" data-prix="22">Azalée — 22 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Cyclamen en pot" data-prix="18">Cyclamen — 18 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Autre plante (sur demande)" data-prix="">Autre plante — sur demande</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#dcab7e">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Toussaint</div><h3>Chrysanthèmes</h3></div>
+            <div class="price">dès 22 €</div></div>
+          <p class="teaser">Le classique de la Toussaint, robuste et généreux.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Chrysanthèmes en pot ou en coupe, dans la couleur que vous aimez, déposés et calés sur la sépulture.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Chrysanthème en pot" data-prix="22">Pot — 22 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Coupe de chrysanthèmes" data-prix="30">Coupe — 30 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Grande potée de chrysanthèmes" data-prix="38">Grande potée — 38 €</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#6fa882">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Élégante &amp; durable</div><h3>Orchidée</h3></div>
             <div class="price">40 €</div></div>
           <p class="teaser">Discrète, raffinée, elle dure des semaines.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
           <p>Une orchidée en pot, sobre et élégante, pour une présence durable qui ne fane pas au bout de quelques jours.</p>
-          <button type="button" class="btn ghost choose" data-nom="Orchidée en pot" data-prix="40">Choisir cette composition</button>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Orchidée en pot" data-prix="40">Orchidée — 40 €</button>
+          </div>
         </div></div>
       </details>
+      <details class="card" style="--c:#8fb4cc">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Sur mesure</div><h3>Une fleur précise ?</h3></div>
+            <div class="price">sur demande</div></div>
+          <p class="teaser">Vous ne trouvez pas sa fleur préférée ? On l'obtient.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Une fleur particulière, une variété rare, une couleur précise, un souvenir lié à une fleur ? Dites-nous ce que vous cherchez, et nous nous chargeons de la trouver.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Fleur sur demande" data-prix="">Demander une fleur précise</button>
+          </div>
+        </div></div>
+      </details>
+    </div>
+
+    <h3 class="cat-h">Compositions durables</h3>
+    <div class="grid">
       <details class="card" style="--c:#d98ba6">
         <summary>
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Grande occasion</div><h3>Grande composition</h3></div>
-            <div class="price">70 €</div></div>
-          <p class="teaser">Une pièce généreuse, pour marquer le coup.</p>
+            <div class="sum-txt"><div class="cat">Tient longtemps</div><h3>Composition sur mousse</h3></div>
+            <div class="price">dès 35 €</div></div>
+          <p class="teaser">Montée sur mousse, elle dure plusieurs semaines.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Une composition ample et soignée, pour un anniversaire de disparition, une date importante, ou simplement pour honorer pleinement la mémoire d'un proche.</p>
-          <button type="button" class="btn ghost choose" data-nom="Grande composition" data-prix="70">Choisir cette composition</button>
-        </div></div>
-      </details>
-      <details class="card" style="--c:#8fa8bd">
-        <summary>
-          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
-            <div class="sum-txt"><div class="cat">Obsèques</div><h3>Couronne ou coussin</h3></div>
-            <div class="price">sur devis</div></div>
-          <p class="teaser">Pour une cérémonie, dans le respect de vos moyens.</p>
-          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
-        </summary>
-        <div class="reveal"><div>
-          <p>Couronne, coussin ou gerbe pour des obsèques, réalisés selon votre budget et vos souhaits. Nous vous montrons des modèles avant de commander.</p>
-          <button type="button" class="btn ghost choose" data-nom="Couronne ou coussin de deuil" data-prix="">Demander un devis</button>
+          <p>Une composition travaillée, montée sur mousse humide. Parfaite quand on ne peut pas revenir souvent.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Composition sur mousse (petite)" data-prix="35">Petite — 35 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Composition sur mousse (grande)" data-prix="55">Grande — 55 €</button>
+          </div>
         </div></div>
       </details>
       <details class="card" style="--c:#bcae87">
@@ -495,17 +545,136 @@
           <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
             <div class="sum-txt"><div class="cat">Sans entretien</div><h3>Fleurs durables</h3></div>
             <div class="price">sur devis</div></div>
-          <p class="teaser">Belles toute l'année, pour une tombe éloignée.</p>
+          <p class="teaser">Fleurs artificielles haut de gamme, belles toute l'année.</p>
           <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
         </summary>
         <div class="reveal"><div>
-          <p>Des fleurs artificielles haut de gamme, très réalistes, qui restent belles longtemps sans entretien. Idéales lorsque personne ne peut passer régulièrement.</p>
-          <button type="button" class="btn ghost choose" data-nom="Fleurs durables" data-prix="">Demander un devis</button>
+          <p>Très réalistes, elles restent belles longtemps sans entretien. Idéales lorsque personne ne peut passer régulièrement.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Bouquet durable" data-prix="">Bouquet durable — devis</button>
+            <button type="button" class="btn ghost choose" data-nom="Composition durable" data-prix="">Composition — devis</button>
+          </div>
         </div></div>
       </details>
     </div>
+
+    <h3 class="cat-h">Deuil &amp; obsèques</h3>
+    <div class="grid">
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Cérémonie</div><h3>Couronne</h3></div>
+            <div class="price">dès 80 €</div></div>
+          <p class="teaser">Couronne de fleurs, selon votre budget.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Couronne ronde de fleurs fraîches, pour des obsèques. Nous vous montrons des modèles avant de commander.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Couronne" data-prix="80">Couronne — 80 €</button>
+            <button type="button" class="btn ghost choose" data-nom="Grande couronne" data-prix="">Grande couronne — devis</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Cérémonie</div><h3>Coussin de deuil</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Coussin fleuri, sobre et digne.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Un coussin de fleurs, réalisé selon vos souhaits et votre budget.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Coussin de deuil" data-prix="">Demander un devis</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#8fa8bd">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-flower"/></svg></span>
+            <div class="sum-txt"><div class="cat">Cérémonie</div><h3>Gerbe ou raquette</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Gerbe à poser, raquette à piquer.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Gerbe de fleurs à déposer ou raquette à planter sur la tombe, dans les tons que vous choisissez.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Gerbe ou raquette" data-prix="">Demander un devis</button>
+          </div>
+        </div></div>
+      </details>
+    </div>
+
+    <h3 class="cat-h">Plaques, gravure &amp; pierre</h3>
+    <div class="grid">
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Plaque</div><h3>Plaque funéraire</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Plaque à poser, unie ou décorée.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Plaque en granit, marbre ou verre, unie ou avec un motif. Nous vous présentons les modèles et les finitions.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Plaque simple" data-prix="">Plaque simple — devis</button>
+            <button type="button" class="btn ghost choose" data-nom="Plaque décorée" data-prix="">Plaque décorée — devis</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Gravure</div><h3>Gravure de texte</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Un nom, une date, quelques mots à graver.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Vous nous envoyez le texte exact (nom, dates, une phrase, un poème), nous le faisons graver sur la plaque ou la pierre, dans la police et la dorure de votre choix.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Gravure de texte" data-prix="">Demander un devis</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Gravure</div><h3>Gravure de photo</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Un portrait gravé ou en médaillon.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Vous nous faites parvenir la photo, nous la faisons reproduire en gravure sur la pierre ou sur un médaillon porcelaine, pour garder le visage auprès de vous.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Gravure de photo / médaillon" data-prix="">Demander un devis</button>
+          </div>
+        </div></div>
+      </details>
+      <details class="card" style="--c:#bcae87">
+        <summary>
+          <div class="sum-head"><span class="badge"><svg class="ico"><use href="#ico-gem"/></svg></span>
+            <div class="sum-txt"><div class="cat">Pierre</div><h3>Pierre tombale</h3></div>
+            <div class="price">sur devis</div></div>
+          <p class="teaser">Rénovation, redressement ou pose complète.</p>
+          <span class="more"><span class="plus">+</span><span class="lbl">Voir et choisir</span></span>
+        </summary>
+        <div class="reveal"><div>
+          <p>Rénovation d'une pierre ancienne, redressement, ou fourniture et pose d'un monument neuf, en lien avec nos partenaires marbriers. État des lieux et devis détaillé avant tout.</p>
+          <div class="opts">
+            <button type="button" class="btn ghost choose" data-nom="Pierre tombale (rénovation ou pose)" data-prix="">Demander un devis</button>
+          </div>
+        </div></div>
+      </details>
+    </div>
+
     <p id="fleur-out" class="out" hidden></p>
-    <p class="teaser" style="margin-top:12px">Livraison, dépôt sur la sépulture et photo après passage compris sur Le Havre et son agglomération. Après avoir choisi, indiquez le cimetière et la date dans le formulaire de contact.</p>
+    <p class="teaser" style="margin-top:14px">Tarifs indicatifs, à ajuster. Livraison, dépôt sur la sépulture et photo après passage compris sur Le Havre et son agglomération. Après avoir choisi, indiquez le cimetière et la date dans le formulaire de contact.</p>
   </div>
 </section>
 
