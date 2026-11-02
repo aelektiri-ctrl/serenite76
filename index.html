@@ -37,7 +37,7 @@
     color-scheme:dark;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;font-size:calc(107% * var(--fz,1))}
+  html{scroll-behavior:smooth;font-size:calc(112% * var(--fz,1))}
   body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1.02rem;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased}
   body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:40}
   .wrap{max-width:960px;margin:0 auto;
@@ -82,7 +82,7 @@
   @keyframes gullA{0%,100%{transform:translate(0px,0px)}50%{transform:translate(5px,-4px)}}
   @keyframes gullB{0%,100%{transform:translate(0px,0px)}50%{transform:translate(-5px,-3px)}}
   .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;padding-block:clamp(48px,9vw,88px)}
-  .hero .sun{width:min(220px,40vw);height:auto;color:var(--gold);justify-self:center}
+  .hero .sun{width:min(240px,44vw);height:auto;color:var(--gold);justify-self:center}
   .hero .mark{font-family:var(--serif);font-size:clamp(2.7rem,10vw,4.3rem);line-height:1;letter-spacing:.015em}
   .hero .mark b{color:var(--accent-deep)}
   .hero .lede{font-family:var(--serif);font-size:clamp(1.4rem,4.6vw,2.1rem);max-width:18ch;margin-top:.3em;color:var(--fg)}
@@ -217,7 +217,7 @@
   @media (max-width:640px){
     .steps,.grid,.contact-grid,.rdv-row{grid-template-columns:1fr}
     .tiers,.statgrid,.flowers{grid-template-columns:1fr 1fr}
-    .hero .wrap{grid-template-columns:1fr}.hero .sun{width:min(180px,50vw)}
+    .hero .wrap{grid-template-columns:1fr}.hero .sun{width:min(200px,56vw)}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -283,11 +283,24 @@
       <circle cx="176" cy="70" r="30" fill="currentColor" opacity="0.12" stroke="none"/>
       <circle cx="176" cy="70" r="30"/>
       <g stroke-width="1.4"><path d="M176 26V18M176 122v8M122 70h-8M238 70h8M139 33l-6-6M213 107l6 6M139 107l-6 6M213 33l6-6"/></g>
-      <g class="gull" stroke-width="1.3"><use href="#ico-gull" x="132" y="64" width="30" height="11"/></g>
-      <g class="gull c" stroke-width="1.3"><use href="#ico-gull" x="192" y="74" width="26" height="10"/></g>
-      <g stroke-width="1.2" opacity="0.6"><use href="#ico-gull" x="0" y="48" width="22" height="8"/><animateTransform attributeName="transform" type="translate" from="-40 0" to="300 0" dur="16s" begin="0s" repeatCount="indefinite"/></g>
-      <g stroke-width="1.2" opacity="0.5"><use href="#ico-gull" x="0" y="56" width="18" height="7"/><animateTransform attributeName="transform" type="translate" from="-40 0" to="300 0" dur="16s" begin="2.5s" repeatCount="indefinite"/></g>
-      <g stroke-width="1.2" opacity="0.45"><use href="#ico-gull" x="0" y="43" width="20" height="8"/><animateTransform attributeName="transform" type="translate" from="-40 0" to="300 0" dur="16s" begin="5s" repeatCount="indefinite"/></g>
+      <g transform="translate(133,64) scale(0.9)" stroke-width="1.7">
+        <path d="M2 9C7 2 12 2 16 7C20 2 25 2 30 9"><animate attributeName="d" dur="0.8s" begin="0s" repeatCount="indefinite" values="M2 9C7 2 12 2 16 7C20 2 25 2 30 9;M2 4C7 8 12 8 16 7C20 8 25 8 30 4;M2 9C7 2 12 2 16 7C20 2 25 2 30 9"/></path>
+      </g>
+      <g transform="translate(187,68) scale(0.78)" stroke-width="1.9">
+        <path d="M2 9C7 2 12 2 16 7C20 2 25 2 30 9"><animate attributeName="d" dur="0.9s" begin="0.3s" repeatCount="indefinite" values="M2 9C7 2 12 2 16 7C20 2 25 2 30 9;M2 4C7 8 12 8 16 7C20 8 25 8 30 4;M2 9C7 2 12 2 16 7C20 2 25 2 30 9"/></path>
+      </g>
+      <g opacity="0.65">
+        <animateTransform attributeName="transform" type="translate" from="-40 48" to="300 48" dur="17s" begin="0s" repeatCount="indefinite"/>
+        <g transform="scale(0.68)" stroke-width="2"><path d="M2 9C7 2 12 2 16 7C20 2 25 2 30 9"><animate attributeName="d" dur="0.7s" begin="0s" repeatCount="indefinite" values="M2 9C7 2 12 2 16 7C20 2 25 2 30 9;M2 4C7 8 12 8 16 7C20 8 25 8 30 4;M2 9C7 2 12 2 16 7C20 2 25 2 30 9"/></path></g>
+      </g>
+      <g opacity="0.55">
+        <animateTransform attributeName="transform" type="translate" from="-40 57" to="300 57" dur="17s" begin="2.5s" repeatCount="indefinite"/>
+        <g transform="scale(0.55)" stroke-width="2.2"><path d="M2 9C7 2 12 2 16 7C20 2 25 2 30 9"><animate attributeName="d" dur="0.75s" begin="0.4s" repeatCount="indefinite" values="M2 9C7 2 12 2 16 7C20 2 25 2 30 9;M2 4C7 8 12 8 16 7C20 8 25 8 30 4;M2 9C7 2 12 2 16 7C20 2 25 2 30 9"/></path></g>
+      </g>
+      <g opacity="0.5">
+        <animateTransform attributeName="transform" type="translate" from="-40 42" to="300 42" dur="17s" begin="5s" repeatCount="indefinite"/>
+        <g transform="scale(0.6)" stroke-width="2.1"><path d="M2 9C7 2 12 2 16 7C20 2 25 2 30 9"><animate attributeName="d" dur="0.72s" begin="0.2s" repeatCount="indefinite" values="M2 9C7 2 12 2 16 7C20 2 25 2 30 9;M2 4C7 8 12 8 16 7C20 8 25 8 30 4;M2 9C7 2 12 2 16 7C20 2 25 2 30 9"/></path></g>
+      </g>
       <path d="M84 190 88 112 92 84 97 60 102 84 106 112 110 190Z"/>
       <path d="M90 152h14M91 128h12M94 102h6M97 60V50M92 55h10"/>
       <path stroke-width="1.5" d="M212 190V118M212 118h34M240 118v16M212 130h18"/>
@@ -857,8 +870,8 @@
 <div class="a11y" role="group" aria-label="Taille du texte">
   <span class="a11y-lbl">Texte</span>
   <button type="button" class="s" data-fz="1" title="Normal">A</button>
-  <button type="button" class="m" data-fz="1.18" title="Grand">A</button>
-  <button type="button" class="l" data-fz="1.35" title="Très grand">A</button>
+  <button type="button" class="m" data-fz="1.2" title="Grand">A</button>
+  <button type="button" class="l" data-fz="1.4" title="Très grand">A</button>
 </div>
 
 <script>
