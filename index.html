@@ -8,7 +8,7 @@
     --bg:#fbfcfe; --surface:#ffffff; --surface-2:#f3f6fc;
     --fg:#383b47; --muted:#7f8196; --line:#e9ecf5;
     --accent:#5f88c6; --accent-deep:#3f619e; --accent-soft:#eaf1fb;
-    --gold:#d9ab5e; --gold-soft:#f8f0dd; --emerald:#1a8f63; --emerald-deep:#0f6e4b; --emerald-soft:#e9f6ef;
+    --gold:#d9ab5e; --gold-soft:#f8f0dd; --emerald:#1a8f63; --emerald-deep:#0f6e4b; --emerald-soft:#e9f6ef; --flash:#e8663e;
     --ok:#6fa882; --rose:#d98ba6;
     --halo-a:#e9f0fb; --halo-b:#f8f0dd;
     --shadow:0 10px 30px rgba(63,97,158,.09);
@@ -22,7 +22,7 @@
     --bg:#11131c; --surface:#1a1d29; --surface-2:#1e2231;
     --fg:#ecebf5; --muted:#a3a4bc; --line:#2a2e3e;
     --accent:#8fb0e6; --accent-deep:#b9cef1; --accent-soft:#1d2740;
-    --gold:#e2bd78; --gold-soft:#2b2a1d; --emerald:#58d6a2; --emerald-deep:#8aeac2; --emerald-soft:#122820;
+    --gold:#e2bd78; --gold-soft:#2b2a1d; --emerald:#58d6a2; --emerald-deep:#8aeac2; --emerald-soft:#122820; --flash:#ff8f6a;
     --ok:#8fbf9f; --rose:#d49fb6;
     --halo-a:#1a2640; --halo-b:#2a2819;
     --shadow:0 12px 34px rgba(0,0,0,.4); --shadow-sm:0 2px 12px rgba(0,0,0,.3);
@@ -32,7 +32,7 @@
     --bg:#11131c; --surface:#1a1d29; --surface-2:#1e2231;
     --fg:#ecebf5; --muted:#a3a4bc; --line:#2a2e3e;
     --accent:#8fb0e6; --accent-deep:#b9cef1; --accent-soft:#1d2740;
-    --gold:#e2bd78; --gold-soft:#2b2a1d; --emerald:#58d6a2; --emerald-deep:#8aeac2; --emerald-soft:#122820;
+    --gold:#e2bd78; --gold-soft:#2b2a1d; --emerald:#58d6a2; --emerald-deep:#8aeac2; --emerald-soft:#122820; --flash:#ff8f6a;
     --ok:#8fbf9f; --rose:#d49fb6;
     --halo-a:#1a2640; --halo-b:#2a2819;
     --shadow:0 12px 34px rgba(0,0,0,.4); --shadow-sm:0 2px 12px rgba(0,0,0,.3);
@@ -67,7 +67,9 @@
   .links a.don{color:#fff;background:var(--accent);margin-top:4px}
   .links a.don:hover,.links a.don.active{background:var(--accent-deep);color:#fff}
 
-  .a11y{display:inline-flex;align-items:center;gap:5px;margin-top:9px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+  .a11y{display:inline-flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:3px 7px}
+  nav .a11y{gap:3px;padding:3px 6px}
+  nav .a11y button{min-width:26px;padding:2px 6px}
   .a11y-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .a11y button{font-family:var(--serif);border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:9px;cursor:pointer;padding:4px 10px;line-height:1.1;min-width:32px}
   .a11y button:hover,.a11y button.on{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft)}
@@ -85,14 +87,14 @@
   @keyframes gullB{0%,100%{transform:translate(0px,0px)}50%{transform:translate(-5px,-3px)}}
   .hero .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;padding-block:clamp(44px,9vw,84px)}
   .hero .sun{width:clamp(116px,30vw,168px);height:auto;color:var(--gold);justify-self:end;margin-top:4px}
-  .hero .mark{font-family:var(--serif);font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.05;letter-spacing:.015em}
-  .hero .mark b{color:var(--accent-deep)}
-  .hero .lede{font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.35rem);max-width:34ch;margin-top:.55em;color:var(--fg)}
-  .hero .sub{color:var(--fg);opacity:.82;max-width:48ch;margin-top:1em;font-size:1.04rem}
+  .hero .mark{font-family:var(--serif);font-size:clamp(1.9rem,6.5vw,2.9rem);line-height:1.02;letter-spacing:.015em;color:var(--emerald-deep)}
+  .hero .mark b{color:var(--flash)}
+  .hero .lede{font-family:var(--serif);font-size:clamp(1.35rem,4.5vw,1.95rem);max-width:30ch;margin-top:.5em;color:var(--emerald-deep);font-weight:500}
+  .hero .sub{color:var(--fg);opacity:.85;max-width:none;margin-top:1em;font-size:1.04rem}
   .hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.6em}
   .assure{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4em}
-  .assure span{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
-  .assure svg{width:14px;height:14px;color:var(--ok)}
+  .assure span{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--emerald-deep);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+  .assure svg{width:14px;height:14px;color:var(--emerald)}
 
   .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;text-decoration:none;padding:12px 22px;border-radius:99px;border:1px solid transparent;cursor:pointer;transition:background .2s,transform .15s}
   .btn:hover{transform:translateY(-1px)}
@@ -100,6 +102,10 @@
   .btn.primary:hover{background:var(--accent-deep)}
   .btn.ghost{background:var(--surface);color:var(--accent-deep);border-color:var(--line)}
   .btn.gold{background:var(--gold);color:#4a3912}
+  .hero .cta-row .btn{padding:9px 17px;font-size:.9rem}
+  .hero .btn.primary{background:var(--gold-soft);color:var(--emerald-deep);border-color:var(--emerald);box-shadow:none}
+  .hero .btn.primary:hover{background:var(--emerald-soft)}
+  .hero .btn.ghost{color:var(--emerald-deep);border-color:var(--emerald)}
   .btn svg{width:18px;height:18px}
 
   section{padding-block:clamp(42px,7vw,66px);border-bottom:1px solid var(--line);scroll-margin-top:66px}
@@ -269,6 +275,11 @@
 <nav class="top">
   <div class="wrap">
     <a class="brand" href="#accueil"><svg class="ico logo"><use href="#ico-sun"/></svg>Sérénité <b>76</b></a>
+    <div class="a11y" role="group" aria-label="Taille du texte">
+      <button type="button" class="s" data-fz="1" title="Texte normal">A</button>
+      <button type="button" class="m" data-fz="1.2" title="Texte grand">A</button>
+      <button type="button" class="l" data-fz="1.4" title="Texte très grand">A</button>
+    </div>
     <button type="button" class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><svg class="ico"><use href="#ico-menu"/></svg></button>
     <div class="links" id="menu">
       <a href="#sepultures">Sépultures</a>
@@ -289,12 +300,6 @@
     <div>
       <div class="eyebrow"><svg class="ico"><use href="#ico-sun"/></svg>Le Havre &amp; agglomération</div>
       <div class="mark">Sérénité <b>76</b></div>
-      <div class="a11y" role="group" aria-label="Taille du texte">
-        <span class="a11y-lbl">Texte</span>
-        <button type="button" class="s" data-fz="1" title="Normal">A</button>
-        <button type="button" class="m" data-fz="1.2" title="Grand">A</button>
-        <button type="button" class="l" data-fz="1.4" title="Très grand">A</button>
-      </div>
       <div class="lede">Veiller sur les vivants, honorer la mémoire des disparus.</div>
       <p class="sub">La distance, l'âge, la maladie éloignent parfois d'une tombe que l'on aime. Nous en prenons soin à votre place, avec douceur, et nous vous envoyons une photo à chaque passage.</p>
       <div class="cta-row">
