@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Association Sérénité 76</title>
+<meta name="description" content="Association loi 1901 au Havre : mémoire des oubliés, isolement des aînés, deuil, précarité, handicap, jeunes des quartiers.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d2420;--muted:#5a645e;--card:#ffffff;--line:#dfe6e1;--emerald:#1a8f63;--emerald-deep:#0f6e4b;--emerald-soft:#e9f6ef;--flash:#e8663e;--serif:Georgia,"Times New Roman",serif;--quote:"Cormorant Garamond",Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1411;--fg:#e9efeb;--muted:#a3b0a8;--card:#151d18;--line:#26332b;--emerald:#58d6a2;--emerald-deep:#8aeac2;--emerald-soft:#122820;--flash:#ff8f6a}}
+:root[data-theme="dark"]{--bg:#0e1411;--fg:#e9efeb;--muted:#a3b0a8;--card:#151d18;--line:#26332b;--emerald:#58d6a2;--emerald-deep:#8aeac2;--emerald-soft:#122820;--flash:#ff8f6a}
+*{box-sizing:border-box}
+html{font-size:calc(112% * var(--fz,1));scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+a{color:var(--emerald-deep)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:12px;min-height:58px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--emerald-deep);text-decoration:none;margin-right:auto}
+.brand small{display:block;font-family:system-ui,sans-serif;font-weight:500;font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.a11y button{border:1px solid var(--fg);background:none;color:var(--fg);border-radius:6px;padding:2px 8px;cursor:pointer;font-weight:700}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:.92rem}
+.links a{text-decoration:none;color:var(--fg)}
+.links a:hover{color:var(--emerald)}
+header.hero{background:var(--emerald-soft);padding:56px 0 48px}
+.eyebrow{color:var(--emerald-deep);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.1rem);line-height:1.15;margin:.3em 0}
+h2{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.1rem);margin:0 0 .4em}
+h3{margin:.2em 0 .3em;font-size:1.08rem}
+.lede{font-size:1.15rem;max-width:720px}
+.quote{font-family:var(--quote);font-style:italic;font-size:1.5rem;color:var(--emerald-deep)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--emerald);cursor:pointer;font-size:1rem}
+.btn.primary{background:var(--emerald);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0e1411}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:#0e1411}}
+.btn.ghost{background:none;color:var(--fg);border-color:var(--fg)}
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card .tag{display:inline-block;font-size:.75rem;font-weight:700;color:var(--emerald-deep);background:var(--emerald-soft);border-radius:999px;padding:2px 10px}
+.card ul{padding-left:18px;margin:.4em 0 0}
+details.card summary{cursor:pointer;list-style:none;font-weight:700}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::after{content:" +";color:var(--emerald)}
+details.card[open] summary::after{content:" −"}
+details.card[open]{grid-column:1/-1}
+.band{background:var(--emerald-deep);color:#fff}
+.band h2,.band .eyebrow{color:#fff}
+:root[data-theme="dark"] .band{color:#0e1411}:root[data-theme="dark"] .band h2,:root[data-theme="dark"] .band .eyebrow{color:#0e1411}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .band,:root:not([data-theme="light"]) .band h2,:root:not([data-theme="light"]) .band .eyebrow{color:#0e1411}}
+.tiers{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.tiers button{padding:10px 18px;border-radius:12px;border:2px solid var(--emerald);background:var(--card);color:var(--fg);font-weight:700;cursor:pointer;font-size:1rem}
+.tiers button.on{background:var(--emerald);color:#fff}
+.note{font-size:.9rem;color:var(--muted)}
+form{display:grid;gap:10px;max-width:620px}
+input,select,textarea{font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);width:100%}
+label{font-weight:600;font-size:.95rem}
+.ok{display:none;padding:12px;border-radius:10px;background:var(--emerald-soft);color:var(--emerald-deep);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.scroll{overflow-x:auto}
+footer{padding:28px 0;font-size:.9rem;color:var(--muted)}
+@media (max-width:640px){.links{display:none}.links.open{display:flex;flex-direction:column;width:100%;padding-bottom:10px}.menu{display:inline-block!important}}
+.menu{display:none;border:1px solid var(--fg);background:none;color:var(--fg);border-radius:6px;padding:4px 10px}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top">Sérénité 76<small>Association loi 1901 · Le Havre</small></a>
+  <span class="a11y" aria-label="Taille du texte"><button data-fz="1">A</button> <button data-fz="1.2">A</button> <button data-fz="1.4">A</button></span>
+  <button class="menu" id="menu" aria-expanded="false">Menu</button>
+  <div class="links" id="links">
+    <a href="#causes">Nos causes</a><a href="#actions">Actions</a><a href="#adherer">Adhérer</a><a href="#benevole">Bénévolat</a><a href="#dons">Dons</a><a href="#transparence">Transparence</a><a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">Association Sérénité 76</div>
+  <h1>N'oublions pas les oubliés.</h1>
+  <p class="lede">Au Havre et en Seine-Maritime, nous agissons bénévolement pour celles et ceux que plus personne ne visite : les défunts sans famille, les aînés isolés, les familles en deuil, les personnes en difficulté, les enfants en situation de handicap et les jeunes des quartiers.</p>
+  <p class="quote">« Nous n'abandonnons personne. »</p>
+  <div class="btns"><a class="btn primary" href="#adherer">Adhérer</a><a class="btn ghost" href="#benevole">Devenir bénévole</a><a class="btn ghost" href="#dons">Faire un don</a></div>
+  <p class="note">Association en cours de déclaration. Toutes nos actions sont gratuites et bénévoles.</p>
+</div></header>
+
+<section id="causes"><div class="wrap">
+  <div class="eyebrow">Nos causes</div>
+  <h2>Six engagements, une même idée : personne ne doit être laissé seul.</h2>
+  <p class="note">Touchez une carte pour en savoir plus.</p>
+  <div class="grid">
+    <details class="card"><summary>Mémoire et sépultures</summary>
+      <p>Fleurir et entretenir des tombes délaissées, toujours avec l'accord de la mairie et des familles connues. Organiser un moment de recueillement à la Toussaint pour les défunts sans famille.</p>
+      <ul><li>Fleurissement bénévole</li><li>Recherche des familles quand c'est possible</li><li>Cérémonies du souvenir</li></ul></details>
+    <details class="card"><summary>Isolement des aînés</summary>
+      <p>Rendre visite aux personnes âgées ou malades seules, à domicile, en maison de retraite ou à l'hôpital. Un appel, une visite, une présence.</p>
+      <ul><li>Visites régulières</li><li>Appels de courtoisie</li><li>Accompagnement aux sorties</li></ul></details>
+    <details class="card"><summary>Soutien au deuil</summary>
+      <p>Écouter et soutenir les familles qui viennent de perdre un proche, et les orienter vers les aides et les professionnels adaptés.</p>
+      <ul><li>Écoute bienveillante</li><li>Orientation vers les aides</li><li>Présence le jour des obsèques si souhaité</li></ul></details>
+    <details class="card"><summary>Personnes en difficulté</summary>
+      <p>Aider les personnes en situation de précarité à connaître leurs droits et à trouver les bons interlocuteurs.</p>
+      <ul><li>Aide pour comprendre un courrier</li><li>Orientation vers la CAF, la CARSAT, le CCAS</li><li>Lien avec les associations d'aide alimentaire</li></ul></details>
+    <details class="card"><summary>Enfants en situation de handicap</summary>
+      <p>Soutenir les enfants handicapés et leurs familles : information sur les droits, accompagnement dans les démarches, moments de répit et de loisirs.</p>
+      <ul><li>Aide aux dossiers MDPH</li><li>Sorties et activités adaptées</li><li>Répit pour les parents aidants</li></ul></details>
+    <details class="card"><summary>Jeunes des quartiers</summary>
+      <p>Faire participer les jeunes aux actions de mémoire et de solidarité, et proposer des activités sportives et éducatives, en partenariat avec des clubs locaux.</p>
+      <ul><li>Chantiers solidaires</li><li>Sport et valeurs (partenariat club)</li><li>Liens entre générations</li></ul></details>
+  </div>
+</div></section>
+
+<section id="actions" class="band"><div class="wrap">
+  <div class="eyebrow">Comment nous agissons</div>
+  <h2>Toujours dans les règles, toujours avec respect.</h2>
+  <div class="grid">
+    <div class="card" style="color:var(--fg)"><h3>Avec l'accord des communes</h3>Nous ne touchons à aucune tombe sans l'autorisation de la mairie et, quand elles sont connues, des familles.</div>
+    <div class="card" style="color:var(--fg)"><h3>Gratuit et bénévole</h3>Les membres du bureau ne sont pas rémunérés. L'argent reçu sert uniquement aux actions.</div>
+    <div class="card" style="color:var(--fg)"><h3>Ouvert à tous</h3>Nos actions sont ouvertes à toute personne, sans aucune discrimination.</div>
+    <div class="card" style="color:var(--fg)"><h3>En réseau</h3>Nous orientons vers les services publics et les associations spécialisées, sans jamais les remplacer.</div>
+  </div>
+</div></section>
+
+<section id="adherer"><div class="wrap">
+  <div class="eyebrow">Adhérer</div>
+  <h2>Rejoignez l'association</h2>
+  <p>La cotisation annuelle est libre, <strong>entre 5 et 20 euros</strong>. Elle est <strong>gratuite</strong> pour les personnes qui ont peu de moyens : il suffit de le dire, sans justificatif.</p>
+  <form id="fAdh">
+    <label>Nom et prénom <input name="nom" required></label>
+    <label>Ville <input name="ville"></label>
+    <label>Téléphone ou e-mail <input name="contact" required></label>
+    <label>Cotisation choisie
+      <select name="cotisation"><option>0 € (adhésion solidaire)</option><option>5 €</option><option>10 €</option><option>15 €</option><option>20 €</option></select></label>
+    <button class="btn primary" type="submit">Envoyer ma demande d'adhésion</button>
+    <div class="ok" id="okAdh"></div>
+  </form>
+</div></section>
+
+<section id="benevole"><div class="wrap">
+  <div class="eyebrow">Bénévolat</div>
+  <h2>Donnez un peu de temps</h2>
+  <p>Une heure par mois suffit. Chacun choisit ce qu'il aime faire.</p>
+  <form id="fBen">
+    <label>Nom et prénom <input name="nom" required></label>
+    <label>Téléphone ou e-mail <input name="contact" required></label>
+    <label>Ce que j'aimerais faire
+      <select name="mission"><option>Fleurir et entretenir des tombes</option><option>Rendre visite à des aînés</option><option>Écouter des familles en deuil</option><option>Aider aux démarches</option><option>Activités avec des enfants handicapés</option><option>Encadrer des jeunes</option><option>Je ne sais pas encore</option></select></label>
+    <label>Mes disponibilités <input name="dispo" placeholder="Exemple : le samedi matin"></label>
+    <button class="btn primary" type="submit">Je propose mon aide</button>
+    <div class="ok" id="okBen"></div>
+  </form>
+</div></section>
+
+<section id="dons"><div class="wrap">
+  <div class="eyebrow">Dons</div>
+  <h2>Chaque don fleurit une tombe oubliée ou rompt une solitude</h2>
+  <div class="tiers" id="tiers"><button data-v="10">10 €</button><button data-v="25">25 €</button><button data-v="50">50 €</button><button data-v="libre">Montant libre</button></div>
+  <div class="ok" id="okDon"></div>
+  <p class="note">Le paiement en ligne ouvrira dès que le compte bancaire de l'association sera ouvert. Les dons iront uniquement sur le compte de l'association. Les reçus fiscaux ne seront délivrés qu'après vérification que l'association remplit les conditions légales.</p>
+</div></section>
+
+<section id="transparence"><div class="wrap">
+  <div class="eyebrow">Transparence</div>
+  <h2>Qui sommes-nous ?</h2>
+  <div class="scroll"><table>
+    <tr><th>Nom</th><td>Association Sérénité 76 (loi du 1er juillet 1901)</td></tr>
+    <tr><th>Siège</th><td>49 rue Amiral Courbet, 76600 Le Havre</td></tr>
+    <tr><th>Présidente</th><td>Sophie de Oliveira Martins</td></tr>
+    <tr><th>Trésorier</th><td>Abdelatif Elktiri El Idrissi</td></tr>
+    <tr><th>Statut</th><td>En cours de déclaration. Le numéro RNA sera publié ici dès réception.</td></tr>
+    <tr><th>Comptes</th><td>Les comptes annuels seront publiés ici après chaque assemblée générale.</td></tr>
+  </table></div>
+  <p class="note">L'association est indépendante de la société Sérénité 76 : comptes bancaires séparés, dirigeants bénévoles, aucun profit pour quiconque.</p>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <h2>Écrivez-nous</h2>
+  <form id="fCon">
+    <label>Votre nom <input name="nom" required></label>
+    <label>Téléphone ou e-mail <input name="contact" required></label>
+    <label>Votre message <textarea name="msg" rows="4" required></textarea></label>
+    <button class="btn primary" type="submit">Envoyer</button>
+    <div class="ok" id="okCon"></div>
+  </form>
+  <p class="note">En cas d'urgence, appelez le 15 (Samu) ou le 112. Pour parler à quelqu'un si vous êtes seul : Solitud'écoute des Petits Frères des Pauvres, 0 800 47 47 88 (gratuit, tous les jours de 15 h à 20 h, pour les plus de 50 ans). En cas de pensées suicidaires : 3114, jour et nuit. Personnes âgées ou handicapées victimes de maltraitance : 3977.</p>
+</div></section>
+
+<section id="mentions"><div class="wrap">
+  <h2>Mentions légales</h2>
+  <p class="note">Éditeur : Association Sérénité 76, 49 rue Amiral Courbet, 76600 Le Havre. Directrice de la publication : Sophie de Oliveira Martins, présidente. Hébergeur : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Les informations envoyées par les formulaires servent uniquement à vous répondre et ne sont jamais vendues ni cédées.</p>
+</div></section>
+
+<footer><div class="wrap">© Association Sérénité 76 — Le Havre. N'oublions pas les oubliés.</div></footer>
+
+<script>
+var ASSO_EMAIL=""; // adresse e-mail de l'association, à renseigner
+function setFz(v){document.documentElement.style.setProperty('--fz',v);try{localStorage.setItem('fz',v)}catch(e){}}
+try{var f=localStorage.getItem('fz');if(f)setFz(f)}catch(e){}
+document.querySelectorAll('[data-fz]').forEach(function(b){b.onclick=function(){setFz(b.dataset.fz)}});
+var m=document.getElementById('menu'),l=document.getElementById('links');
+m.onclick=function(){l.classList.toggle('open');m.setAttribute('aria-expanded',l.classList.contains('open'))};
+l.querySelectorAll('a').forEach(function(a){a.onclick=function(){l.classList.remove('open')}});
+function hook(id,ok,subject,thanks){
+  document.getElementById(id).onsubmit=function(e){
+    e.preventDefault();
+    var d=new FormData(this),t=[];d.forEach(function(v,k){t.push(k+' : '+v)});
+    var box=document.getElementById(ok);
+    if(ASSO_EMAIL){location.href='mailto:'+ASSO_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(t.join('\n'));box.textContent=thanks}
+    else{box.textContent=thanks+' Notre adresse e-mail arrive très bientôt : merci de repasser dans quelques jours, ou de nous laisser un message par téléphone dès qu\'il sera affiché.'}
+    box.style.display='block';
+  }
+}
+hook('fAdh','okAdh','Demande d\'adhésion','Merci ! Votre demande d\'adhésion est prête.');
+hook('fBen','okBen','Proposition de bénévolat','Merci pour votre générosité !');
+hook('fCon','okCon','Message depuis le site','Merci pour votre message.');
+document.querySelectorAll('#tiers button').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('#tiers button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+  var o=document.getElementById('okDon');o.style.display='block';
+  o.textContent=(b.dataset.v==='libre'?'Merci pour votre don libre !':'Merci pour votre don de '+b.dataset.v+' € !')+' Le paiement en ligne ouvre très bientôt.';
+}});
+</script>
+</body>
+</html>
